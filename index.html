@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Cover Section</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+   
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.0/css/all.min.css"
+    />
+   
+  </head>
+  <body>
+    <!-- ============ cover section =========== -->
+    <div class="top-bar">
+      <form class="d-inline-block">
+        <label for="currency" class="text-white me-2">Currency:</label>
+        <select
+          class="form-select form-select-sm d-inline-block w-auto"
+          id="currency"
+          name="currency"
+        >
+          <option value="usd">USD</option>
+          <option value="eur">Euro</option>
+          <option value="gbp">GBP</option>
+          <option value="inr">INR</option>
+        </select>
+      </form>
+    </div>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark  p-0 m -0">
+      <div class="container-fluid navmanu">
+        <a class="navbar-brand" href="#"
+          ><img src="imgs/logo.png" width="250px" alt=""
+        /></a>
+
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto me-5 p-3">
+            <li class="nav-item"><a class="nav-link" href="#">CarStock</a></li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">How to Buy</a>
+            </li>
+            <li class="nav-item"><a class="nav-link" href="#">About Us</a></li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Local Introduction</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Local Introduction</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Contact Us</a>
+            </li>
+
+            <li class="left-nav text-center">
+              <a
+                class="nav-link d-flex flex-column align-items-center"
+                href="#"
+              >
+                <i class="icon fas fa-user-plus mb-1"></i>
+                Sign Up
+              </a>
+            </li>
+            <li class="left-nav text-center">
+              <a
+                class="nav-link d-flex flex-column align-items-center"
+                href="#"
+              >
+                <i class="fas fa-arrow-right-to-bracket mb-1"></i>
+                Log In
+              </a>
+            </li>
+          </ul>
+
+          <!-- Currency Selector -->
+        </div>
+      </div>
+    </nav>
+
+    <!-- Cover Section -->
+    <div class="cover">
+      <div class="cover-overlay"></div>
+      <div class="cover-content">
+        <h1 class="display-4">REAL MOTOR JAPAN</h1>
+        <p class="lead">
+          Established in 1979, offers affordable, quality used vehicles sourced
+          in Japan.
+        </p>
+      </div>
+    </div>
+
+    <!-- ======== USERD CAR SECTION ======-->
+    <div class="container py-5 bg-light custom-width">
+      <div class="row">
+        <!-- Column 1 -->
+        <div class="col-md-4 mb-4">
+          <select class="form-select mb-3">
+            <option selected>Select Make</option>
+            <option>Toyota</option>
+            <option>Nissan</option>
+            <option>Honda</option>
+          </select>
+          <select class="form-select mb-3">
+            <option selected>Min Price</option>
+            <option>Civic</option>
+            <option>Corolla</option>
+            <option>Sunny</option>
+          </select>
+          <select class="form-select">
+            <option selected>Max Price</option>
+            <option>2023</option>
+            <option>2022</option>
+            <option>2021</option>
+          </select>
+        </div>
+
+        <!-- Column 2 -->
+        <div class="col-md-4 mb-4">
+          <select class="form-select mb-3">
+            <option selected>Select Model</option>
+            <option>Automatic</option>
+            <option>Manual</option>
+          </select>
+          <select class="form-select mb-3">
+            <option selected>Min Year</option>
+            <option>Petrol</option>
+            <option>Diesel</option>
+            <option>Hybrid</option>
+          </select>
+          <select class="form-select">
+            <option selected>Mix Year</option>
+            <option>1000cc</option>
+            <option>1500cc</option>
+            <option>2000cc</option>
+          </select>
+        </div>
+
+        <!-- Column 3 -->
+        <div class="col-md-4 mb-4">
+          <select class="form-select mb-3">
+            <option selected>Body Type</option>
+            <option>2WD</option>
+            <option>4WD</option>
+          </select>
+          <select class="form-select mb-3">
+            <option selected>Min Milage</option>
+            <option>Black</option>
+            <option>White</option>
+            <option>Silver</option>
+          </select>
+          <select class="form-select">
+            <option selected>Mix Milage</option>
+            <option>Japan</option>
+            <option>Dubai</option>
+            <option>Pakistan</option>
+          </select>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-8 mb-3">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="search by make, model, or keyword."
+          />
+        </div>
+        <div class="col-md-4 mb-3">
+          <button class="btn btn-primary w-100">Search</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="container py-5">
+      <div class="row">
+        <div class="col abc text-center">
+          <a href="#makers-section">By Makers</a>
+        </div>
+        <div
+          id="New Arrivals "
+          class="col text-center border-start border-dark abc"
+        >
+          <a href="#arrivals-section">New Arrivals</a>
+        </div>
+        <div
+          id="By Types "
+          class="col text-center border-start border-dark abc"
+        >
+          <a href="#types-section">By Types</a>
+        </div>
+        <div
+          id="By Trucks "
+          class="col text-center border-start border-dark abc"
+        >
+          <a href="#trucks-section">By Trucks</a>
+        </div>
+        <div
+          id="How to buy "
+          class="col text-center border-start border-dark abc"
+        >
+          <a href="#howtobuy-section">How to buy</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ======== USED CAR SECTION ======-->
+
+    <div class="container-fluid">
+      <div class="row text-white py-3" id="makers-section">
+        <div class="col-3 d-flex align-items-center">
+          <hr class="flex-grow-1 me-3 border-dark border-3" />
+          <h2 class="mb-0 text-dark">Search By Makers</h2>
+        </div>
+        <div class="col-9 mb-3 d-flex justify-content-end">
+          <button class="btn btn-primary p-2">View all Makers</button>
+        </div>
+      </div>
+    </div>
+    <!-- ======== SEARCH BY MAKERS ======-->
+    <div class="container custom-width py-5">
+      <div class="row g-4 justify-content-center">
+        <div class="col d-flex justify-content-center">
+          <div class="border p-3 text-center rounded">
+            <img src="imgs/honda.png" alt="Honda" class="img-fluid mb-2" />
+            <p class="mb-0">By Makers</p>
+          </div>
+        </div>
+        <div class="col d-flex justify-content-center">
+          <div class="border p-3 text-center rounded">
+            <img src="imgs/honda.png" alt="Honda" class="img-fluid mb-2" />
+            <p class="mb-0">By Makers</p>
+          </div>
+        </div>
+        <div class="col d-flex justify-content-center">
+          <div class="border p-3 text-center rounded">
+            <img src="imgs/honda.png" alt="Honda" class="img-fluid mb-2" />
+            <p class="mb-0">By Makers</p>
+          </div>
+        </div>
+        <div class="col d-flex justify-content-center">
+          <div class="border p-3 text-center rounded">
+            <img src="imgs/honda.png" alt="Honda" class="img-fluid mb-2" />
+            <p class="mb-0">By Makers</p>
+          </div>
+        </div>
+        <div class="col d-flex justify-content-center">
+          <div class="border p-3 text-center rounded">
+            <img src="imgs/honda.png" alt="Honda" class="img-fluid mb-2" />
+            <p class="mb-0">By Makers</p>
+          </div>
+        </div>
+      </div>
+      <div class="row py-5">
+        <div class="col d-flex justify-content-center">
+          <div class="border p-3 text-center rounded">
+            <img src="imgs/honda.png" alt="Honda" class="img-fluid mb-2" />
+            <p class="mb-0">By Makers</p>
+          </div>
+        </div>
+        <div class="col d-flex justify-content-center">
+          <div class="border p-3 text-center rounded">
+            <img src="imgs/honda.png" alt="Honda" class="img-fluid mb-2" />
+            <p class="mb-0">By Makers</p>
+          </div>
+        </div>
+        <div class="col d-flex justify-content-center">
+          <div class="border p-3 text-center rounded">
+            <img src="imgs/honda.png" alt="Honda" class="img-fluid mb-2" />
+            <p class="mb-0">By Makers</p>
+          </div>
+        </div>
+        <div class="col d-flex justify-content-center">
+          <div class="border p-3 text-center rounded">
+            <img src="imgs/honda.png" alt="Honda" class="img-fluid mb-2" />
+            <p class="mb-0">By Makers</p>
+          </div>
+        </div>
+        <div class="col d-flex justify-content-center">
+          <div class="border p-3 text-center rounded">
+            <img src="imgs/honda.png" alt="Honda" class="img-fluid mb-2" />
+            <p class="mb-0">By Makers</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- ======== SEARCH BY MAKERS ======-->
+
+    <!-- ======== SEARCH BY TYPES ======-->
+
+    <div class="searchbytype bg-black py-5">
+      <div class="container py-5 custom-width">
+        <div class="container-fluid">
+          <div class="row text-white py-3" id="types-section">
+            <div class="col-3 d-flex align-items-center">
+              <hr class="flex-grow-1 me-2 border-light border-3" />
+              <h2 class="mb-0 text-light">Search By Types</h2>
+            </div>
+            <div class="col-9 mb-3 d-flex justify-content-end">
+              <button class="btn btn-primary p-2">View all Type</button>
+            </div>
+          </div>
+        </div>
+        <div class="row g-4 justify-content-center text-light">
+          <div class="col d-flex justify-content-center">
+            <div class="p-3 text-center rounded">
+              <img src="imgs/sendan.png" alt="Honda" class="img-fluid mb-2" />
+              <p class="mb-0">SEDAN 242</p>
+            </div>
+          </div>
+          <div class="col d-flex justify-content-center">
+            <div class="p-3 text-center rounded">
+              <img src="imgs/sendan.png" alt="Honda" class="img-fluid mb-2" />
+              <p class="mb-0">SEDAN 242</p>
+            </div>
+          </div>
+          <div class="col d-flex justify-content-center">
+            <div class="p-3 text-center rounded">
+              <img src="imgs/sendan.png" alt="Honda" class="img-fluid mb-2" />
+              <p class="mb-0">SEDAN 242</p>
+            </div>
+          </div>
+          <div class="col d-flex justify-content-center">
+            <div class="p-3 text-center rounded">
+              <img src="imgs/sendan.png" alt="Honda" class="img-fluid mb-2" />
+              <p class="mb-0">SEDAN 242</p>
+            </div>
+          </div>
+          <div class="col d-flex justify-content-center">
+            <div class="p-3 text-center rounded">
+              <img src="imgs/sendan.png" alt="Honda" class="img-fluid mb-2" />
+              <p class="mb-0">SEDAN 242</p>
+            </div>
+          </div>
+          <div class="col d-flex justify-content-center">
+            <div class="p-3 text-center rounded">
+              <img src="imgs/sendan.png" alt="Honda" class="img-fluid mb-2" />
+              <p class="mb-0">SEDAN 242</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- ======== SEARCH BY TYPES ======-->
+
+    <!-- ======== New Arrivals======-->
+    <div class="container-fluid mt-5 custom-width">
+      <div class="row text-white py-3" id="arrivals-section">
+        <div class="col-3 d-flex align-items-center">
+          <hr class="flex-grow-1 me-3 border-primary border-3" />
+          <h2 class="mb-0 text-primary">New Arrivals</h2>
+        </div>
+        <div class="col-9 mb-3 d-flex justify-content-end">
+          <button class="btn btn-primary p-2">View More</button>
+        </div>
+      </div>
+
+      <div class="row justify-content-center">
+        <div class="col-md-2">
+          <div class="custom-card">
+            <span class="badge-new">NEW</span>
+             
+            <img src="imgs/nisan.png" alt="Image" class="custom-img zoom-img" />
+            <div class="custom-content">
+              <h2 class="h5 bold">2012 NISSAN NOTE</h2>
+              <p>2012/11</p>
+              <p style="color: #2ecc71">FOB US$757</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-2">
+          <div class="custom-card">
+            <span class="badge-new">NEW</span>
+            <img src="imgs/ractis.png" alt="Image" class="custom-img zoom-img" />
+            <div class="custom-content">
+              <h2 class="h5 bold">2012 NISSAN NOTE</h2>
+              <p>2012/11</p>
+              <p style="color: #2ecc71">FOB US$757</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-2">
+          <div class="custom-card">
+            <span class="badge-new">NEW</span>
+            <img src="imgs/mazda.png" alt="Image" class="custom-img zoom-img" />
+            <div class="custom-content">
+              <h2 class="h5 bold">2012 NISSAN NOTE</h2>
+              <p>2012/11</p>
+              <p style="color: #2ecc71">FOB US$757</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-2">
+          <div class="custom-card">
+            <span class="badge-new">NEW</span>
+            <img src="imgs/sentia.png" alt="Image" class="custom-img zoom-img" />
+            <div class="custom-content">
+              <h2 class="h5 bold">2012 NISSAN NOTE</h2>
+              <p>2012/11</p>
+              <p style="color: #2ecc71">FOB US$757</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-2">
+          <div class="custom-card">
+            <span class="badge-new">NEW</span>
+            <img src="imgs/toyota.png" alt="Image" class="custom-img zoom-img" />
+            <div class="custom-content">
+              <h2 class="h5 bold">2012 NISSAN NOTE</h2>
+              <p>2012/11</p>
+              <p style="color: #2ecc71">FOB US$757</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-2">
+          <div class="custom-card">
+            <span class="badge-new">NEW</span>
+            <img src="imgs/toyoto.png" alt="Image" class="custom-img zoom-img" />
+            <div class="custom-content">
+              <h2 class="h5 bold">2012 NISSAN NOTE</h2>
+              <p>2012/11</p>
+              <p style="color: #2ecc71">FOB US$757</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ======== New Arrivals======-->
+
+    <!-- ======== How To Buy ======-->
+
+    <div class="howtobuy bg-black py-5 mt-5">
+      <div class="container py-5 custom-width">
+        <div class="container-fluid">
+          <div class="row text-white py-3" id="howtobuy-section">
+            <div class="col-3 d-flex align-items-center">
+              <hr class="flex-grow-1 me-2 border-light border-3" />
+              <h2 class="mb-0 text-light">How  To Buy</h2>
+            </div>
+            <div class="col-9 mb-3 d-flex justify-content-end">
+              <button class="btn btn-primary p-2">View all Type</button>
+            </div>
+          </div>
+
+          <div class="row d-flex  justify-content-between text-light">
+              <div class="col-md-2 text-center ">
+                <div class="circle-icon">
+                  <i class="fas fa-user text-dark"></i> 
+                  
+                </div>
+                <h5 class="text-white">Create an account</h5>
+                <p class="text-white fs-6">Sign up to get started</p>
+              </div>
+
+              <div class="col-md-2 text-center">
+                <div class="circle-icon">
+                  <i class="fas fa-car text-dark"></i> 
+                  
+                </div>
+                <h5 class="text-white">Find cars</h5>
+                <p class="text-white fs-6">Browse our extensive inventory</p>
+              </div>
+           
+              <div class="col-md-2 text-center">
+                <div class="circle-icon">
+                  <i class=" fas fa-envelope text-dark"></i> 
+                  
+                </div>
+                <h5 class="text-white">Negotiate</h5>
+                <p class="text-white fs-6">Get the best deal possible</p>
+              </div>
+           
+              <div class="col-md-2 text-center">
+                <div class="circle-icon">
+                  <i class="fas fa-truck text-dark"></i> 
+                  
+                </div>
+                <h5 class="text-white">Pay
+                </h5>
+                <p class="text-white fs-6">Secure and easy payment options</p>
+              </div>
+           
+              <div class="col-md-2 text-center">
+                <div class="circle-icon">
+                  <i class="fas fa-van-shuttle text-dark"></i> 
+                  
+                </div>
+                <h5 class="text-white">Deliver</h5>
+                <p class="text-white fs-6">Get your car delivered to you</p>
+              </div>
+            </div>
+          
+          </div>
+
+        </div>
+        </div>
+      </div>
+    </div>
+    <!-- ======== How To Buy ======-->
+    <!-- ======== Local Introduction ======-->
+    <div class="container-fluid mt-5 bg-light" id="map-section">
+      <div class="row">
+        <div class="col-12 text-center mb-4">
+          <h2>Local Introduction</h2>
+          <p>
+            You can check the local information by selecting from the country on
+            the map.
+          </p>
+        </div>
+
+        <div class="col-12">
+          <!-- Google Maps Embed -->
+          <div style="width: 100%; height: 400px">
+            <iframe
+              width="100%"
+              height="100%"
+              frameborder="0"
+              style="border: 0"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3241.9580871158043!2d139.75159971525898!3d35.68517598019245!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188c0be1f7d0b9%3A0x44c0fba79016b5f2!2sTokyo%2C%20Japan!5e0!3m2!1sen!2s!4v1637070416676!5m2!1sen!2s"
+              allowfullscreen
+            ></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+    <hr width="100%" class="my-5" />
+
+
+    <!-- ======== Local Introduction ======-->
+    <!-- ======== Footer ======-->
+    <footer class=" text-white py-4 ">
+      <div class="container">
+        <div class="row text-dark text-center text-md-start ">
+          <div class="col-md-4 ">
+
+            <a class="navbar-brand " href="#"
+            ><img src="imgs/logo.png" width="250px" alt=""
+          /></a>
+
+            <ul class="list-unstyled mt-5">
+              <p>5-2 Nishihaiagari, Kamigaoka-cho, Toyota City, Aichi Prefecture, 473-0931, Japan</p>
+              <p>Tel +81-565-85-0602
+                </p>
+                <p>Fax +81-565-85-0606</p>
+              <button class="btn btn-primary w-75">Contact Us</button>
+            <hr width="100%" class="my-3" />
+            Terms of Use
+            <hr width="100%" class="my-3" />
+            Privacy Policy
+            <hr width="100%" class="my-3" />
+            Cookie Policy
+            </ul>
+          </div>
+          <div class="col-md-2">
+            <h5>Contents</h5>
+            <ul class="list-unstyled fs-6">
+              <p>Car Stock</p>
+<p>How to Buy</p>
+<p>About Us</p>
+<p>Local Introduction</p>
+<p>Contact Us</p>
+            
+            </ul>
+          </div>
+          <div class="col-md-2">
+            <h5>Makers</h5>
+            <ul class="list-unstyled">
+             <p>Couper</p>
+             <p>Convertiable</p>
+             <p>Sedan</p>
+             <p>Wagon</p>
+             <p>Convertiable</p>
+             <p>Sedan</p>
+             <p>Wagon</p>
+            </ul>
+          </div>
+          <div class="col-md-2">
+            <h5>Body Types</h5>
+            <ul class="list-unstyled fs-6">
+             <p>Browse All Stock
+             
+              </p>
+              <p> Sale Cars</p>
+              <p>
+                Recommended Cars</p>
+                <p>Luxury Cars</p>
+            </ul>
+          </div>
+          <div class="col-md-2">
+            <h5>Find Car</h5>
+            <ul class="list-unstyled">
+              <p>Browse All Stock
+             
+              </p>
+              <p> Sale Cars</p>
+              <p>
+                Recommended Cars</p>
+                <p>Luxury Cars</p>
+            </ul>
+          </div>
+         
+        </div>
+      </div>
+    </footer>
+    
+    <!-- ======== Footer ======-->
+
+   
+  </body>
+</html>
