@@ -802,7 +802,7 @@ background-color: rgba(0,0,0,0.3);
     <!-- ======== SEARCH BY TYPES ======-->
 
     <!-- ======== New Arrivals======-->
-     <div class="d-flex align-items-center justify-content-between ">
+     <!-- <div class="d-flex align-items-center justify-content-between ">
   <div class="d-flex align-items-center py-3 ">
     <hr  class="m-0  border-3 border-primary" style="width:70px; " />
     <h2 class="mb-0 text-primary ms-3">New Arrivals</h2>
@@ -906,7 +906,54 @@ background-color: rgba(0,0,0,0.3);
           </div>
         </div>
       </div>
+    </div> -->
+
+
+ <!-- ======== New Arrivals======-->
+  <div class="d-flex align-items-center justify-content-between ">
+    <div class="d-flex align-items-center py-3 ">
+      <hr class="m-0 border-3 border-primary" style="width:70px;" />
+      <h2 class="mb-0 text-primary ms-3">New Arrivals</h2>
     </div>
+    <button class="btn btn-outline-primary btn-primary text-light px-4 mx-3">Learn More</button>
+  </div>
+
+  <div class="container-fluid mt-2">
+    <div class="row justify-content-center" id="car-list">
+      <!-- Dynamic car cards will be injected here -->
+    </div>
+  </div>
+
+  <!-- Script to load cars via API -->
+  <script>
+    fetch('https://mocki.io/v1/121b708c-fbf4-46a4-ba20-3085d8983f41')
+      .then(res => res.json())
+      .then(data => {
+        const container = document.getElementById('car-list');
+
+        data.slice(0, 6).forEach(car => {
+          const col = document.createElement('div');
+          col.className = 'col-md-2';
+
+          col.innerHTML = `
+            <div class="custom-card">
+              <div class="box">
+                <div class="ribbon">NEW</div>
+              </div>
+              <img src="${car.imageurl}" alt="Image" class="custom-img zoom-img" />
+              <div class="custom-content">
+                <h2 class="h5 bold">${car.name}</h2>
+                <p>${new Date(car.date).toLocaleDateString('en-GB')}</p>
+                <p style="color: #2ecc71">FOB US$${car.price.toLocaleString()}</p>
+              </div>
+            </div>
+          `;
+
+          container.appendChild(col);
+        });
+      })
+      .catch(err => console.error('Failed to load car data:', err));
+  </script>
 
     <!-- ======== New Arrivals======-->
 
