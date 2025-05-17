@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Local Introduction</title>
+
+    <!-- <link rel="stylesheet" href="css/bootstrap.min.css"> -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.0/css/all.min.css"
+    />
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <style>
+      html {
+        scroll-behavior: smooth;
+      }
+      * {
+        font-family: Arial, sans-serif;
+        box-sizing: border-box;
+      }
+
+     nav.navbar {
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      background-color: white/* Sticky color */
+       
+    }
+  
+    .navbar .nav-link i {
+      font-size: 16px;
+    }
+    .navbar .nav-link {
+      display: flex;
+      align-items: center;
+      font-size: 14px;
+      margin-right: 30px;
+      font-weight: bold;
+      color:#343434;
+    }
+
+    .navbar .nav-link:hover {
+      color: black;
+    }
+
+    .navbar-brand img {
+      max-height: 60px;
+      transition: all 0.3s ease;
+    }
+ .navbar.signup-btn {
+      padding: 10px;
+      border-radius: 5px;
+      border: 1px solid rgba(0, 57, 192, 0.9);
+      color:rgba(0, 57, 192, 0.9);
+    }
+
+    .navbar.login-btn {
+      padding: 12px;
+      border-radius: 5px;
+      background-color:rgba(0, 57, 192, 0.9) ;
+      border: 1px solid rgba(0, 57, 192, 0.9);
+      color:white;
+    }
+     
+     
+      
+      .custom-wrapper{
+        width: 95%;
+      }
+     .container-fluid .btn {
+        font-size: 14px;
+        background-color: #0642f4;
+      }
+  
+  
+ 
+  /* footer */
+  .container-fluid .footer ul p
+  {
+    font-size: 14px;
+    font-weight: bold;
+  }
+  .floating-div {
+  opacity: 0;
+  transform: translateY(-30px);
+  animation: fadeInDown 1s ease forwards;
+}
+
+.floating-div .form-box {
+  opacity: 1; /* No need to animate individually */
+  transform: none;
+  animation: none;
+
+}
+/* footer */
+
+    </style>
+  </head>
+
+  <body>
+   <!-- Navbar -->
+   <nav class="navbar navbar-expand-lg  p-0 navmanu">
+    <div class="container-fluid d-flex align-items-center">
+      <!-- Logo -->
+      <a class="navbar-brand" href="index.html">
+        <img id="navbar-logo" src="./imgs/logo.png" alt="Logo" />
+      </a>
+
+      <!-- Mobile toggle -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- Navigation and buttons -->
+      <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
+        <!-- Center nav items -->
+        <ul class="navbar-nav mx-auto gap-4">
+          <li class="nav-item"><a class="nav-link" href="./carstock.html">Car Stock</a></li>
+          <li class="nav-item"><a class="nav-link" href="howtobuy.html">How to Buy</a></li>
+          <li class="nav-item"><a class="nav-link" href="aboutus.html">About Us</a></li>
+          <li class="nav-item"><a class="nav-link" href="localintro.html">Local Introduction</a></li>
+          <li class="nav-item">
+            <a class="nav-link" href="#" onclick="document.getElementById('contactModal').style.display='block'; return false;">Contact Us</a>
+          </li>
+        </ul>
+
+        <!-- Right side login/signup -->
+        <div class="d-flex align-items-center me-3 gap-3 left-nav">
+  <a class="nav-link signup-btn d-flex align-items-center " href="#">
+    <i class="fas fa-user-plus me-1"></i>Sign Up
+  </a>
+  <a class="nav-link login-btn d-flex align-items-center " href="#">
+    <i class="fas fa-arrow-right-to-bracket me-1"></i>Log In
+  </a>
+</div>
+
+      </div>
+    </div>
+  </nav>
+    <!-- Navbar -->
+
+   
+ <!-- contact details -->
+<!-- contact details -->
+<div class="container-fluid mt-5 px-0">
+  <div class="row m-0 p-0">
+    <div class="col-12 p-0">
+      <!-- Google Map -->
+      <div class="mt-5">
+        <iframe 
+          src="https://www.google.com/maps?q=5-2 Nishihaiagari, Kamigaoka-cho, Toyota City, Aichi Prefecture, 473-0931, Japan&output=embed" 
+          width="100%" 
+          height="200" 
+          style="border:0;" 
+          allowfullscreen 
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+ <!-- contact details -->
+ 
+
+
+<hr class="width:100% mt-5">
+   
+      </footer> 
+
+     <!-- ======== Footer ======-->
+
+    <div class="container-fluid ">
+        <div class="row text-dark text-center text-md-start footer m-auto">
+          <div class="col-md-4">
+
+            <a class="navbar-brand " href="#"
+            ><img src="imgs/logo.png" width="250px" alt=""
+          /></a>
+
+            <ul class="list-unstyled mt-5">
+              <p>5-2 Nishihaiagari, Kamigaoka-cho, Toyota City, Aichi Prefecture, 473-0931, Japan</p>
+              <p>Tel +81-565-85-0602
+                </p>
+                <p>Fax +81-565-85-0606</p>
+              <button class="btn btn-primary w-75 my-3
+              ">Contact Us</button>
+             
+            <hr width="75%" class="my-1" />
+            Terms of Use
+            <hr width="75%" class="my-1" />
+            Privacy Policy
+            <hr width="75%" class="my-1" />
+            Cookie Policy
+            </ul>
+          </div>
+          <div class="col-md-2">
+            <h6 ><b>Contents</b></h6>
+            <hr width="100%"/>
+            <ul class="list-unstyled ">
+              <p></p>
+<p>How to Buy</p>
+<p>About Us</p>
+<p>Local Introduction</p>
+<p>Contact Us</p>
+            
+            </ul>
+          </div>
+          <div class="col-md-1">
+            <h6><b>Makers</b></h6>
+              <hr width="250%"/>
+            <ul class="list-unstyled">
+             <p>Couper</p>
+             <p>Convertiable</p>
+             <p>Sedan</p>
+             <p>Wagon</p>
+             <p>Convertiable</p>
+             <p>Sedan</p>
+             <p>Wagon</p>
+            </ul>
+          </div>
+          <div class="col-md-1 mt-5">
+            
+           
+            <ul class="list-unstyled">
+             <p>MAZDA</p>
+             <p>BMW</p>
+             <p>LAND ROVER</p>
+             <p>ISUZU</p>
+             <p>JEEP</p>
+             
+            </ul>
+          </div>
+          <div class="col-md-2">
+            <h6><b>
+              Body Types
+            </b></h6>
+              <hr width="110%"/>
+            <ul class="list-unstyled fs-6">
+             <p>Couper
+              </p>
+              <p>Convertiable</p>
+              <p>
+                Sedan</p>
+                <p>Wagon</p>
+                <p>Van</p>
+                <p>Truck</p>
+                <p>SUV</p>
+            </ul>
+          </div>
+          <div class="col-md-2 py-0">
+            <h6><b>Find Car</b></h6>
+              <hr width="100%"/>
+            <ul class="list-unstyled">
+              <p>Browse All Stock </p>
+              <p> Sale Cars</p>
+              <p> Recommended Cars</p>
+                <p>Luxury Cars</p>
+            </ul>
+          </div>
+         
+        </div>
+      <div class="row">
+          <div class="col-12 d-flex justify-content-end ">
+            <i class="fab fa-facebook-square px-2 fs-2 text-primary "></i>
+            <i class="fab fa-instagram px-2 fs-2 text-primary "></i>
+
+          </div>
+          <div class="col-12 d-flex justify-content-end mt-2">
+            
+            <p>Copyright © Real Motor Japan All Rights Reserved.</p>
+          </div>
+        </div>
+     
+      </div>
+
+      
+        
+    
+    <!-- ======== Footer ======-->
+    
+      <!-- Inside your body tag -->
+
+    <!-- ======== Footer ======-->
+     <!-- contact page -->
+<div id="contactModal" style="display:none; position:fixed; top:50%; left:50%; 
+transform:translate(-50%, -50%); background:white; padding:10px; 
+box-shadow:0 0 10px #000; z-index:1000; border-radius: 6px; width: 450px; ">
+  
+  <span style="float:right; cursor:pointer; font-size:20px;" 
+        onclick="document.getElementById('contactModal').style.display='none'">
+    &times;
+  </span>
+
+  <h2 style="margin-top: 0;">Contact Us</h2>
+  <p><i class="fas fa-envelope"></i> <a href="">info@realmotor.jp</a></p>
+  <p><i class="fab fa-whatsapp"></i> <a href="">WhatsApp: +81 803 541 9928</a></p>
+  <p><i class="fas fa-phone"></i> <a href="">Telephone: +81 565 85 0602</a></p>
+  <p><i class="fab fa-facebook"></i> <a href="">Facebook Page</a></p>
+  <p><i class="fab fa-instagram"></i> <a href="
+    ">Instagram Profile</a></p>
+</div>
+<!-- contact page -->
+  </body>
+</html>

@@ -1,0 +1,3735 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Car stock</title>
+
+    <!-- <link rel="stylesheet" href="css/bootstrap.min.css"> -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.0/css/all.min.css"
+    />
+    <style>
+      html {
+        scroll-behavior: smooth;
+      }
+      * {
+       font-family: BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        box-sizing: border-box;
+      }
+        /* Navbar Sticky Fix  after scroll*/
+    nav.navbar {
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      background-color: white/* Sticky color */
+       
+    }
+  
+    .navbar .nav-link i {
+      font-size: 16px;
+    }
+    .navbar .nav-link {
+      display: flex;
+      align-items: center;
+      font-size: 14px;
+      margin-right: 30px;
+      font-weight: bold;
+      color:#343434;
+    }
+
+    .navbar .nav-link:hover {
+      color: black;
+    }
+
+    .navbar-brand img {
+      max-height: 60px;
+      transition: all 0.3s ease;
+    }
+ .navbar.signup-btn {
+      padding: 10px;
+      border-radius: 5px;
+      border: 1px solid rgba(0, 57, 192, 0.9);
+      color:rgba(0, 57, 192, 0.9);
+    }
+
+    .navbar.login-btn {
+      padding: 12px;
+      border-radius: 5px;
+      background-color:rgba(0, 57, 192, 0.9) ;
+      border: 1px solid rgba(0, 57, 192, 0.9);
+      color:white;
+    }
+
+      /* =======Cover Section========== */
+      .cover {
+        background-image: url("imgs/banner.9b15487546d932bac673.webp");
+        background-repeat: no-repeat;
+        height: 40vh;
+        background-size: cover;
+        background-position: center;
+        position: relative;
+        
+      }
+      .floating-div {
+    display: flex;
+    gap: 50px;              /* 20px space between the boxes */
+    margin-top: -30px;      /* lift above the section */
+    padding: 0 10px;        /* optional left-right padding */
+    z-index: 10;            /* ensure it's on top */
+    position: relative;     /* required for z-index to work */
+    flex-wrap: wrap;        /* responsive wrap */
+  }
+
+  .form-box {
+    background: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    margin: 2px;            /* tiny outer space */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    flex: 1;                /* equal width for both boxes */
+    min-width: 300px;       /* prevents squishing on small screens */
+    z-index: 10;
+    position: relative;}
+
+    .custom-radio {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    
+    padding: 4px 10px;
+    background-color: #808080;
+    border-radius: 999px;
+    cursor: pointer;
+    margin-right: 15px;
+    user-select: none;
+    transition: background 0.3s ease;
+  }
+  .custom-radio input[type="radio"] {
+    display: none;
+  }
+
+  .custom-radio .circle {
+    width: 20px;
+    height: 20px;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    background-color: #fff;
+    margin-right: 10px;
+    transition: background-color 0.3s ease;
+  }
+
+  .custom-radio input[type="radio"]:checked + .circle {
+    background-color: #007bff;
+    border-color: #007bff;
+  }
+  .form-select.no-border {
+    border: none;
+    box-shadow: none;
+    padding-right: 1.5rem; /* optional for dropdown arrow space */
+    background-position: right 0.5rem center;
+  }
+  /* =======Cover Section========== */
+  /* footer */
+  .container-fluid .footer ul p
+  {
+    font-size: 14px;
+    font-weight: bold;
+  }
+  .floating-div {
+  opacity: 0;
+  transform: translateY(-30px);
+  animation: fadeInDown 1s ease forwards;
+}
+
+.floating-div .form-box {
+  opacity: 1; /* No need to animate individually */
+  transform: none;
+  animation: none;
+}
+
+@keyframes fadeInDown {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+  /* footer */
+    </style>
+  </head>
+  <body>
+        <!-- First Section -->
+    <!-- Navbar -->
+   <nav class="navbar navbar-expand-lg  p-0 navmanu">
+    <div class="container-fluid d-flex align-items-center">
+      <!-- Logo -->
+      <a class="navbar-brand" href="index.html">
+        <img id="navbar-logo" src="./imgs/logo.png" alt="Logo" />
+      </a>
+
+      <!-- Mobile toggle -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- Navigation and buttons -->
+      <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
+        <!-- Center nav items -->
+        <ul class="navbar-nav mx-auto gap-4">
+          <li class="nav-item"><a class="nav-link" href="./carstock.html">Car Stock</a></li>
+          <li class="nav-item"><a class="nav-link" href="howtobuy.html">How to Buy</a></li>
+          <li class="nav-item"><a class="nav-link" href="aboutus.html">About Us</a></li>
+          <li class="nav-item"><a class="nav-link" href="localintro.html">Local Introduction</a></li>
+          <li class="nav-item">
+            <a class="nav-link" href="#" onclick="document.getElementById('contactModal').style.display='block'; return false;">Contact Us</a>
+          </li>
+        </ul>
+
+        <!-- Right side login/signup -->
+        <div class="d-flex align-items-center me-3 gap-3 left-nav">
+  <a class="nav-link signup-btn d-flex align-items-center " href="#">
+    <i class="fas fa-user-plus me-1"></i>Sign Up
+  </a>
+  <a class="nav-link login-btn d-flex align-items-center " href="#">
+    <i class="fas fa-arrow-right-to-bracket me-1"></i>Log In
+  </a>
+</div>
+
+      </div>
+    </div>
+  </nav>
+    <!-- Navbar -->
+    <!-- Cover Setion-->
+    <div class="cover"></div>
+
+    <!-- First Section -->
+
+    
+<!-- Second Section-->
+
+
+ 
+<div class="floating-div">
+  
+  <div class="form-box">
+
+    <div class="row">
+      <!-- Column 1 -->
+      <div class="col-md-4 mb-4">
+        <select class="form-select mb-3">
+          <option selected>Select Make</option>
+          <option>TOYOTA</option>
+          <option>NISSAN</option>
+          <option>HONDA</option>
+          <option>MITSUBISHI</option>
+        </select>
+        <select class="form-select mb-3">
+          <option selected>Min Milage</option>
+          <option>Black</option>
+          <option>White</option>
+          <option>Silver</option>
+        </select>
+        <select class="form-select">
+          <option selected>Max Milage</option>
+          <option>Japan</option>
+          <option>Dubai</option>
+          <option>Pakistan</option>
+        </select>
+      
+      </div>
+
+      <!-- Column 2 -->
+      <div class="col-md-4 mb-4">
+        <div class="col-md-12 mb-4">
+          <input type="text" class="form-control form-select" placeholder="Select Port" />
+        </div>
+        
+                 
+        
+        <select class="form-select mb-3">
+          <option selected>Min Year</option>
+          <option>Petrol</option>
+          <option>Diesel</option>
+          <option>Hybrid</option>
+        </select>
+        <select class="form-select">
+          <option selected>Max Year</option>
+          <option>1000cc</option>
+          <option>1500cc</option>
+          <option>2000cc</option>
+        </select>
+      </div>
+
+      <!-- Column 3 -->
+      <div class="col-md-4 mb-4">
+        <select class="form-select mb-3">
+          <option selected>Body Type</option>
+          <option>2WD</option>
+          <option>4WD</option>
+        </select>
+        <select class="form-select mb-3">
+          <option selected>Min Price</option>
+          <option>$1,000</option>
+          <option>$3,000</option>
+          <option>$5,000</option>
+          <option>$10,000</option>
+        </select>
+        <select class="form-select">
+          <option selected>Max Price</option>
+          <option>$1,000</option>
+          <option>$3,000</option>
+          <option>$5,000</option>
+          <option>$10,000</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12 mb-3">
+        <input type="text" class="form-control" placeholder="Search by make, model, or keyword.">
+      </div>
+      <div class="col-md-12 mb-3">
+        <button class="btn btn-primary w-100 p-2">Search</button>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Second Section -->
+  <div class="form-box">
+  <h5 class="bold">Total Price Calculator</h5>
+    <div class="row">
+      <!-- Column 1 -->
+      <div class="col-md-6 mb-4">
+        <select class="form-select mb-3">
+          <option selected>Select Country</option>
+          <option>Zambiya</option>
+          <option>Tanzaniya</option>
+        
+          <option>Mozambique</option>
+          <option>Kenya</option>
+        </select>
+       
+        
+      </div>
+         <!-- Column 2-->
+   
+         <div class="col-md-6 mb-4">
+  <input type="text" class="form-control form-select" placeholder="Select Port" />
+</div>
+
+   
+<div class="col-md-4 mb-4">
+<label class="custom-radio">
+  <input type="radio" name="example"  />
+  <span class="circle"></span>
+
+</label>
+<span class="text" >Inspection</span>
+</div>
+<div class="col-md-4 mb-4">
+  <label class="custom-radio">
+    <input type="radio" name="example"  />
+    <span class="circle"></span>
+  
+  </label>
+  <span class="text" >Inspection</span>
+  </div>
+      <div class="col-md-3">
+        <button class="btn btn-primary w-100">Calculate</button>
+      </div>
+    </div>
+    <div class="col-12 w-100 mb-4">
+      Total Price calculator will estimate the total price of the cars based on your shipping desstination port and other preferences.
+      <br />
+
+      Note: In some cases the total price cannot be estimated.
+
+    </div>
+
+  </div>
+
+     
+ <!-- Second Section -->
+   <!-- Third Section -->
+
+      
+   <div class="container-fluid ">
+    <div class="d-flex justify-content-between align-items-center ">
+      
+      <!-- Left Side: Heading and Span -->
+      <h4 class="">
+        <b>1243</b> <span class="fs-6 text-muted">units found</span>
+      </h4>
+      
+      <!-- Right Side: Arrow Buttons -->
+      <div>
+        <button class="btn btn-outline-secondary bg-secondary rounded-1 text-white disabled fs-2 py-0 px-3">
+          &lsaquo; <!-- Left angle bracket: ‹ -->
+        </button>
+        <button class="btn btn-outline-primary text-white rounded-1  bg-primary fs-2 py-0 px-3">
+          &rsaquo; <!-- Right angle bracket: › -->
+        </button>
+      </div>
+      
+    </div>
+  </div>
+  
+<!-- Third Section -->
+ <!-- Fourth Section -->
+<div class="container-fluid 
+ ">
+  <div class="d-flex justify-content-between align-items-center ">
+
+    <!-- Left Side -->
+    <div class="d-flex align-items-center">
+      <p class="mb-0">Sort by</p>
+      <select class="form-select form-select-sm w-auto no-border">
+        <option>Updated Old to New</option>
+        <option>Update New to Old</option>
+        <option>Price low to high</option>
+        <option>Price high to low</option>
+        <option>Reg. Year New to Old</option>
+      </select>
+    </div>
+
+    <!-- Right Side -->
+    <div class="d-flex align-items-center ">
+      <p class="mb-0">View Price</p>
+      <select class="form-select form-select-sm w-auto no-border">
+        <option value="usd">USD</option>
+        <option value="eur">EUR</option>
+        <option value="gbp">AUD</option>
+        <option value="inr">GBP</option>
+        <option value="inr">CAD</option>
+        <option value="inr">YEN</option>
+          
+      </select>
+   
+    </div>
+  
+  </div>
+  <div class="col-12  border-bottom border-black"></div>
+</div>
+
+  <!-- Fourth Section -->
+
+  <!-- Fifth Section -->
+<div class="container-fluid   ">
+ 
+ <!-- First Row: Header -->
+  <div class="row border border-black p-3 align-items-center">
+     <div class="col-12">
+      <div class="d-flex justify-content-between align-items-center">
+        <div class="d-flex align-items-center gap-2">
+          <p class="mb-0"><i><b>#</b>N9022020133F-90</i></p>
+        </div>
+        <div class="d-flex align-items-center gap-2">
+          <button class="btn btn-primary">+ Add to favourite</button>
+        </div>
+      </div>
+    </div>
+     <!-- Second Row: Image and Content --> 
+    <!-- Left Side (Image) -->
+    <div class="col-md-4">
+     <a href="./detailpage.html"> <img
+        src="./imgs/vehicle_9022020133_0.jpg"
+        alt="Image"
+        class="img-fluid"
+      /></a>
+    </div>
+
+    <!-- Right Side (Content) -->
+    <div class="col-md-8">
+      <h3><b>2017 TOYOTA TOYOACE</b></h3>
+      <a href="">
+        Flatbody 1.2 tons - Engine 1KD - Automatic Transmission - Key
+        Less - ABS - Airbag - AC - AM/FM
+      </a>
+      <h4 class="mt-3"><b>US$ 17,868</b></h4>
+      <span>FOB Price</span><br />
+
+      <div class="row my-3">
+        <div class="col-md-2 border-end border-black">
+         <span style="color: #808080; margin-right:0.3em;"> Year  </span><b>2017/02 </b>
+        </div>
+        <div class="col-md-3  border-end border-black ">
+              <span style="color: #808080; margin-right:0.3em;"> Mileage   </span><b>  20035 km</b>
+        
+        </div>
+        <div class="col-md-3 ">
+          <span style="color: #808080; margin-right:0.3em;"> Exterior Color   </span><b>White </b>
+          
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-12 d-flex justify-content-end">
+          <button class="btn btn-primary mt-3 px-5">View Details</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Fifth Section -->
+
+<div class="container-fluid   ">
+ 
+ <!-- First Row: Header -->
+  <div class="row border border-black p-3 align-items-center">
+     <div class="col-12">
+      <div class="d-flex justify-content-between align-items-center">
+        <div class="d-flex align-items-center gap-2">
+          <p class="mb-0"> <i><b>#</b>N9022030204F-90</i></p>
+        </div>
+        <div class="d-flex align-items-center gap-2">
+          <button class="btn btn-primary">+ Add to favourite</button>
+        </div>
+      </div>
+    </div>
+     <!-- Second Row: Image and Content --> 
+    <!-- Left Side (Image) -->
+    <div class="col-md-4">
+      <a href="./detailpage.html"><img
+        src="./imgs/vehicle_9022030204_0.jpg"
+        alt="Image"
+        class="img-fluid"
+      /></a>
+    </div>
+
+    <!-- Right Side (Content) -->
+    <div class="col-md-8">
+      <h3><b>2017 TOYOTA TOWNACE </b></h3>
+      <a href="">
+       Camping Explorer Mini Van-Automatic-Key less-ABS-Airbag-AC-AM/FM
+      </a>
+      <h4 class="mt-3"><b>US$ 21,626</b></h4>
+      <span>FOB Price</span><br/>
+
+      <div class="row my-3">
+        <div class="col-md-2 border-end border-black">
+         <span style="color: #808080; margin-right:0.3em;"> Year  </span><b>2017/02 </b>
+        </div>
+        <div class="col-md-3  border-end border-black ">
+              <span style="color: #808080; margin-right:0.3em;"> Mileage   </span><b>  35185 km km</b>
+        
+        </div>
+        <div class="col-md-3 ">
+          <span style="color: #808080; margin-right:0.3em;"> Exterior Color   </span><b>Blue </b>
+          
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-12 d-flex justify-content-end">
+          <button class="btn btn-primary mt-3 px-5">View Details</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  
+ <!-- Fifth Section -->
+  
+ <!-- Fifth Section -->
+   <div class="container-fluid   ">
+ 
+ <!-- First Row: Header -->
+  <div class="row border border-black p-3 align-items-center">
+     <div class="col-12">
+      <div class="d-flex justify-content-between align-items-center">
+        <div class="d-flex align-items-center gap-2">
+          <p class="mb-0">  <i><b>#</b>N9022040012F-90</i></p>
+        </div>
+        <div class="d-flex align-items-center gap-2">
+          <button class="btn btn-primary">+ Add to favourite</button>
+        </div>
+      </div>
+    </div>
+     <!-- Second Row: Image and Content --> 
+    <!-- Left Side (Image) -->
+    <div class="col-md-4">
+      <img
+        src="./imgs//vehicle_9022040012_0.jpg"
+        alt="Image"
+        class="img-fluid"
+      />
+    </div>
+
+    <!-- Right Side (Content) -->
+    <div class="col-md-8">
+      <h3><b>2015 HINO DUTRO</b></h3>
+      <a href="">
+      Dump Truck 3 tons-5MT-ABS-Airbag-AC-AM
+      </a>
+      <h4 class="mt-3"><b>US$ 33,902</b></h4>
+      <span>FOB Price</span><br />
+
+      <div class="row my-3">
+        <div class="col-md-2 border-end border-black">
+         <span style="color: #808080; margin-right:0.3em;"> Year  </span><b>2015/08 </b>
+        </div>
+        <div class="col-md-3  border-end border-black ">
+              <span style="color: #808080; margin-right:0.3em;"> Mileage   </span><b>   28000 km </b>
+        
+        </div>
+        <div class="col-md-3 ">
+          <span style="color: #808080; margin-right:0.3em;"> Exterior Color </span><b>White</b>
+          
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-12 d-flex justify-content-end">
+          <button class="btn btn-primary mt-3 px-5">View Details</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Fifth Section -->
+  <div class="container-fluid   ">
+ 
+ <!-- First Row: Header -->
+  <div class="row border border-black p-3 align-items-center">
+     <div class="col-12">
+      <div class="d-flex justify-content-between align-items-center">
+        <div class="d-flex align-items-center gap-2">
+          <p class="mb-0">  <i><b>#</b> N1022040273F-22</i></p>
+        </div>
+        <div class="d-flex align-items-center gap-2">
+          <button class="btn btn-primary">+ Add to favourite</button>
+        </div>
+      </div>
+    </div>
+     <!-- Second Row: Image and Content --> 
+    <!-- Left Side (Image) -->
+    <div class="col-md-4">
+      <img
+        src="./imgs/vehicle_1022040273_0.jpg"
+        alt="Image"
+        class="img-fluid"
+      />
+    </div>
+
+    <!-- Right Side (Content) -->
+    <div class="col-md-8">
+      <h3><b>2015 ISUZU ELF TRUCK</b></h3>
+      <a href="">
+    Aluminum Van 3.8 tons-Automatic-Engine 4JJ1-ABS-Airbag-AC-AM/FM
+      </a>
+      <h4 class="mt-3"><b>US$ 15,503</b></h4>
+      <span>FOB Price</span><br />
+
+      <div class="row my-3">
+        <div class="col-md-2 border-end border-black">
+         <span style="color: #808080; margin-right:0.3em;"> Year  </span><b>2015/11  </b>
+        </div>
+        <div class="col-md-3  border-end border-black ">
+              <span style="color: #808080; margin-right:0.3em;"> Mileage   </span><b>  136329  km </b>
+        
+        </div>
+        <div class="col-md-3 ">
+          <span style="color: #808080; margin-right:0.3em;"> Exterior Color </span><b>White</b>
+          
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-12 d-flex justify-content-end">
+          <button class="btn btn-primary mt-3 px-5">View Details</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+ <!-- Fifth Section -->
+   <div class="container-fluid   ">
+ 
+ <!-- First Row: Header -->
+  <div class="row border border-black p-3 align-items-center">
+     <div class="col-12">
+      <div class="d-flex justify-content-between align-items-center">
+        <div class="d-flex align-items-center gap-2">
+          <p class="mb-0">  <i><b>#</b> N9022080109F-90</i></p>
+        </div>
+        <div class="d-flex align-items-center gap-2">
+          <button class="btn btn-primary">+ Add to favourite</button>
+        </div>
+      </div>
+    </div>
+     <!-- Second Row: Image and Content --> 
+    <!-- Left Side (Image) -->
+    <div class="col-md-4">
+      <img
+        src="./imgs/vehicle_9022080109_0.jpg"
+        alt="Image"
+        class="img-fluid"
+      />
+    </div>
+
+    <!-- Right Side (Content) -->
+    <div class="col-md-8">
+      <h3><b>2013 HINO DUTRO</b></h3>
+      
+      <h4 class="mt-3"><b>US$ 28,847</b></h4>
+      <span>FOB Price</span><br />
+
+      <div class="row my-3">
+        <div class="col-md-2 border-end border-black">
+         <span style="color: #808080; margin-right:0.3em;"> Year  </span><b> 2013/01 </b>
+        </div>
+        <div class="col-md-3  border-end border-black ">
+              <span style="color: #808080; margin-right:0.3em;"> Mileage   </span><b>  77424   km </b>
+        
+        </div>
+        <div class="col-md-3 ">
+          <span style="color: #808080; margin-right:0.3em;"> Exterior Color </span><b>White</b>
+          
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-12 d-flex justify-content-end">
+          <button class="btn btn-primary mt-3 px-5">View Details</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+  <!-- Fifth Section -->
+   <div class="container-fluid ">
+ 
+ <!-- First Row: Header -->
+  <div class="row border border-black p-3 align-items-center">
+     <div class="col-12">
+      <div class="d-flex justify-content-between align-items-center">
+        <div class="d-flex align-items-center gap-2">
+          <p class="mb-0">  <i><b>#</b> N2022090719F-10</i></p>
+        </div>
+        <div class="d-flex align-items-center gap-2">
+          <button class="btn btn-primary">+ Add to favourite</button>
+        </div>
+      </div>
+    </div>
+     <!-- Second Row: Image and Content --> 
+    <!-- Left Side (Image) -->
+    <div class="col-md-4">
+      <img
+        src="./imgs/vehicle_2022090719_0.jpg"
+        alt="Image"
+        class="img-fluid"
+      />
+    </div>
+
+    <!-- Right Side (Content) -->
+    <div class="col-md-8">
+      <h3><b>1990 MITSUBISHI CANTER</b></h3>
+      <a href="">
+      4.2 FLAT BODY★4D33 ENGINE★MANUAL PUMP★ONLY 91,000KM★LONG BODY★
+      </a>
+      <h4 class="mt-3"><b>US$ 6,896</b></h4>
+      <span>FOB Price</span><br />
+
+      <div class="row my-3">
+        <div class="col-md-2 border-end border-black">
+         <span style="color: #808080; margin-right:0.3em;"> Year  </span><b> 1990/11 </b>
+        </div>
+        <div class="col-md-3  border-end border-black ">
+              <span style="color: #808080; margin-right:0.3em;"> Mileage   </span><b>   90721 km </b>
+        
+        </div>
+        <div class="col-md-3 ">
+          <span style="color: #808080; margin-right:0.3em;"> Exterior Color </span><b>White</b>
+          
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-12 d-flex justify-content-end">
+          <button class="btn btn-primary mt-3 px-5">View Details</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+ <!-- Fifth Section -->
+  <div class="container-fluid ">
+ 
+ <!-- First Row: Header -->
+  <div class="row border border-black p-3 align-items-center">
+     <div class="col-12">
+      <div class="d-flex justify-content-between align-items-center">
+        <div class="d-flex align-items-center gap-2">
+          <p class="mb-0">  <i><b>#</b> N9022090042F-90</i></p>
+        </div>
+        <div class="d-flex align-items-center gap-2">
+          <button class="btn btn-primary">+ Add to favourite</button>
+        </div>
+      </div>
+    </div>
+     <!-- Second Row: Image and Content --> 
+    <!-- Left Side (Image) -->
+    <div class="col-md-4">
+      <img
+        src="./imgs/vehicle_9022090042_0.jpg"
+        alt="Image"
+        class="img-fluid"
+      />
+    </div>
+
+    <!-- Right Side (Content) -->
+    <div class="col-md-8">
+      <h3><b>2005 HINO RANGER</b></h3>
+      <a href="">
+   Truck Crane 2.93 tons- 6MT- Engine J08E-ABS-Airbag-AC-AM/FM
+      </a>
+      <h4 class="mt-3"><b>US$ 16,185</b></h4>
+      <span>FOB Price</span><br />
+
+      <div class="row my-3">
+        <div class="col-md-2 border-end border-black">
+         <span style="color: #808080; margin-right:0.3em;"> Year  </span><b> 2005/03</b>
+        </div>
+        <div class="col-md-3  border-end border-black ">
+              <span style="color: #808080; margin-right:0.3em;"> Mileage   </span><b>  757292 km </b>
+        
+        </div>
+        <div class="col-md-3 ">
+          <span style="color: #808080; margin-right:0.3em;"> Exterior Color </span><b>Blue</b>
+          
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-12 d-flex justify-content-end">
+          <button class="btn btn-primary mt-3 px-5">View Details</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+  <!-- Fifth Section -->
+
+ <div class="container-fluid ">
+ 
+ <!-- First Row: Header -->
+  <div class="row border border-black p-3 align-items-center">
+     <div class="col-12">
+      <div class="d-flex justify-content-between align-items-center">
+        <div class="d-flex align-items-center gap-2">
+          <p class="mb-0">  <i><b>#</b>  N9022110002F-90</i></p>
+        </div>
+        <div class="d-flex align-items-center gap-2">
+          <button class="btn btn-primary">+ Add to favourite</button>
+        </div>
+      </div>
+    </div>
+     <!-- Second Row: Image and Content --> 
+    <!-- Left Side (Image) -->
+    <div class="col-md-4">
+      <img
+        src="./imgs/vehicle_9022110002_0.jpg"
+        alt="Image"
+        class="img-fluid"
+      />
+    </div>
+
+    <!-- Right Side (Content) -->
+    <div class="col-md-8">
+      <h3><b>2020 TOYOTA HIACE VAN</b></h3>
+      
+      <h4 class="mt-3"><b>US$ 19,854</b></h4>
+      <span>FOB Price</span><br />
+
+      <div class="row my-3">
+        <div class="col-md-2 border-end border-black">
+         <span style="color: #808080; margin-right:0.3em;"> Year  </span><b>  2020/10</b>
+        </div>
+        <div class="col-md-3  border-end border-black ">
+              <span style="color: #808080; margin-right:0.3em;"> Mileage   </span><b>  21354 km </b>
+        
+        </div>
+        <div class="col-md-3 ">
+          <span style="color: #808080; margin-right:0.3em;"> Exterior Color </span><b>White</b>
+          
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-12 d-flex justify-content-end">
+          <button class="btn btn-primary mt-3 px-5">View Details</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  
+ <!-- Fifth Section -->
+   <div class="container-fluid ">
+ 
+ <!-- First Row: Header -->
+  <div class="row border border-black p-3 align-items-center">
+     <div class="col-12">
+      <div class="d-flex justify-content-between align-items-center">
+        <div class="d-flex align-items-center gap-2">
+          <p class="mb-0">  <i><b>#</b>   N9022110030F-90</i></p>
+        </div>
+        <div class="d-flex align-items-center gap-2">
+          <button class="btn btn-primary">+ Add to favourite</button>
+        </div>
+      </div>
+    </div>
+     <!-- Second Row: Image and Content --> 
+    <!-- Left Side (Image) -->
+    <div class="col-md-4">
+      <img
+        src="./imgs/vehicle_9022110030_0.jpg"
+        alt="Image"
+        class="img-fluid"
+      />
+    </div>
+
+    <!-- Right Side (Content) -->
+    <div class="col-md-8">
+      <h3><b>2008 ISUZU FORWARD</b></h3>
+      <a href="">HookLift 3.45 tons- 6MT- Engine 6HK1- ABS-Airbag-AC-AM/FM</a>
+      
+      <h4 class="mt-3"><b>US$ 17,427</b></h4>
+      <span>FOB Price</span><br />
+
+      <div class="row my-3">
+        <div class="col-md-2 border-end border-black">
+         <span style="color: #808080; margin-right:0.3em;"> Year  </span><b>  2008/06</b>
+        </div>
+        <div class="col-md-3  border-end border-black ">
+              <span style="color: #808080; margin-right:0.3em;"> Mileage   </span><b>  728247 km </b>
+        
+        </div>
+        <div class="col-md-3 ">
+          <span style="color: #808080; margin-right:0.3em;"> Exterior Color </span><b>Blue</b>
+          
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-12 d-flex justify-content-end">
+          <button class="btn btn-primary mt-3 px-5">View Details</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+  <!-- Fifth Section -->
+ <div class="container-fluid ">
+ 
+ <!-- First Row: Header -->
+  <div class="row border border-black p-3 align-items-center">
+     <div class="col-12">
+      <div class="d-flex justify-content-between align-items-center">
+        <div class="d-flex align-items-center gap-2">
+          <p class="mb-0">  <i><b>#</b>   N9022110030F-90</i></p>
+        </div>
+        <div class="d-flex align-items-center gap-2">
+          <button class="btn btn-primary">+ Add to favourite</button>
+        </div>
+      </div>
+    </div>
+     <!-- Second Row: Image and Content --> 
+    <!-- Left Side (Image) -->
+    <div class="col-md-4">
+      <img
+        src="./imgs/vehicle_9022120077_0.jpg"
+        alt="Image"
+        class="img-fluid"
+      />
+    </div>
+
+    <!-- Right Side (Content) -->
+    <div class="col-md-8">
+      <h3><b>2017 ISUZU FORWARD</b></h3>
+      
+      
+      <h4 class="mt-3"><b>US$ 48,190</b></h4>
+      <span>FOB Price</span><br />
+
+      <div class="row my-3">
+        <div class="col-md-2 border-end border-black">
+         <span style="color: #808080; margin-right:0.3em;"> Year  </span><b> 2017/07</b>
+        </div>
+        <div class="col-md-3  border-end border-black ">
+              <span style="color: #808080; margin-right:0.3em;"> Mileage   </span><b> 93000 km </b>
+        
+        </div>
+        <div class="col-md-3 ">
+          <span style="color: #808080; margin-right:0.3em;"> Exterior Color </span><b>White</b>
+          
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-12 d-flex justify-content-end">
+          <button class="btn btn-primary mt-3 px-5">View Details</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+ <!-- Fifth Section -->
+  <div class="container-fluid ">
+ 
+ <!-- First Row: Header -->
+  <div class="row border border-black p-3 align-items-center">
+     <div class="col-12">
+      <div class="d-flex justify-content-between align-items-center">
+        <div class="d-flex align-items-center gap-2">
+          <p class="mb-0">  <i><b>#</b>  N2023020123F-10</i></p>
+        </div>
+        <div class="d-flex align-items-center gap-2">
+          <button class="btn btn-primary">+ Add to favourite</button>
+        </div>
+      </div>
+    </div>
+     <!-- Second Row: Image and Content --> 
+    <!-- Left Side (Image) -->
+    <div class="col-md-4">
+      <img
+        src="./imgs/vehicle_2023020123_0.jpg"
+        alt="Image"
+        class="img-fluid"
+      />
+    </div>
+
+    <!-- Right Side (Content) -->
+    <div class="col-md-8">
+      <h3><b>2002 MITSUBISHI CANTER</b></h3>
+      <a href="">4.2 LONG BODY ☆4D33-ENGINE☆POWER WINDOWS☆5 SPEED MANUAL☆</a>
+      
+      <h4 class="mt-3"><b>US$ 4,827</b></h4>
+      <span>FOB Price</span><br />
+
+      <div class="row my-3">
+        <div class="col-md-2 border-end border-black">
+         <span style="color: #808080; margin-right:0.3em;"> Year  </span><b>  2002/07</b>
+        </div>
+        <div class="col-md-3  border-end border-black ">
+              <span style="color: #808080; margin-right:0.3em;"> Mileage   </span><b> 194566 km </b>
+        
+        </div>
+        <div class="col-md-3 ">
+          <span style="color: #808080; margin-right:0.3em;"> Exterior Color </span><b>White</b>
+          
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-12 d-flex justify-content-end">
+          <button class="btn btn-primary mt-3 px-5">View Details</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+  <!-- Fifth Section -->
+
+
+<div class="container-fluid ">
+ 
+ <!-- First Row: Header -->
+  <div class="row border border-black p-3 align-items-center">
+     <div class="col-12">
+      <div class="d-flex justify-content-between align-items-center">
+        <div class="d-flex align-items-center gap-2">
+          <p class="mb-0">  <i><b>#</b>  N2023020123F-10</i></p>
+        </div>
+        <div class="d-flex align-items-center gap-2">
+          <button class="btn btn-primary">+ Add to favourite</button>
+        </div>
+      </div>
+    </div>
+     <!-- Second Row: Image and Content --> 
+    <!-- Left Side (Image) -->
+    <div class="col-md-4">
+      <img
+        src="./imgs/vehicle_2023020697_0.jpg"
+        alt="Image"
+        class="img-fluid"
+      />
+    </div>
+
+    <!-- Right Side (Content) -->
+    <div class="col-md-8">
+      <h3><b>1993 MITSUBISHI FUSO ROSA</b></h3>
+      <a href="">4.2 BUS 4WD☆4D33‐ENGINE☆MANUAL PUMP☆29SEATER☆HIGH DECK☆</a>
+      
+      <h4 class="mt-3"><b>US$ 7,793</b></h4>
+      <span>FOB Price</span><br />
+
+      <div class="row my-3">
+        <div class="col-md-2 border-end border-black">
+         <span style="color: #808080; margin-right:0.3em;"> Year  </span><b> 1993/03</b>
+        </div>
+        <div class="col-md-3  border-end border-black ">
+              <span style="color: #808080; margin-right:0.3em;"> Mileage   </span><b>  203926 km </b>
+        
+        </div>
+        <div class="col-md-3 ">
+          <span style="color: #808080; margin-right:0.3em;"> Exterior Color </span><b>Other</b>
+          
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-12 d-flex justify-content-end">
+          <button class="btn btn-primary mt-3 px-5">View Details</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+ <!-- Fifth Section -->
+   <!-- Fifth Section -->
+
+
+<div class="container-fluid ">
+ 
+ <!-- First Row: Header -->
+  <div class="row border border-black p-3 align-items-center">
+     <div class="col-12">
+      <div class="d-flex justify-content-between align-items-center">
+        <div class="d-flex align-items-center gap-2">
+          <p class="mb-0">  <i><b>#</b> N1023040140F-25</i></p>
+        </div>
+        <div class="d-flex align-items-center gap-2">
+          <button class="btn btn-primary">+ Add to favourite</button>
+        </div>
+      </div>
+    </div>
+     <!-- Second Row: Image and Content --> 
+    <!-- Left Side (Image) -->
+    <div class="col-md-4">
+      <img
+        src="./imgs/vehicle_1023040140_0.jpg"
+        alt="Image"
+        class="img-fluid"
+      />
+    </div>
+
+    <!-- Right Side (Content) -->
+    <div class="col-md-8">
+      <h3><b>2008 MITSUBISHI FIGHTER</b></h3>
+      <a href="">Dump Truck 6.5 tons- 6MT- Engine 6M60- 5 Passengers- Back Monitor- ABS-Airbag-AC-AM/FM</a>
+      
+      <h4 class="mt-3"><b>US$ 16,275</b></h4>
+      <span>FOB Price</span><br />
+
+      <div class="row my-3">
+        <div class="col-md-2 border-end border-black">
+         <span style="color: #808080; margin-right:0.3em;"> Year  </span><b> 2008/09</b>
+        </div>
+        <div class="col-md-3  border-end border-black ">
+              <span style="color: #808080; margin-right:0.3em;"> Mileage   </span><b> 364000 km </b>
+        
+        </div>
+        <div class="col-md-3 ">
+          <span style="color: #808080; margin-right:0.3em;"> Exterior Color </span><b> Silver</b>
+          
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-12 d-flex justify-content-end">
+          <button class="btn btn-primary mt-3 px-5">View Details</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+ <!-- Fifth Section -->
+  <!-- Fifth Section -->
+   <!-- Fifth Section -->
+
+
+<div class="container-fluid ">
+ 
+ <!-- First Row: Header -->
+  <div class="row border border-black p-3 align-items-center">
+     <div class="col-12">
+      <div class="d-flex justify-content-between align-items-center">
+        <div class="d-flex align-items-center gap-2">
+          <p class="mb-0">  <i><b>#</b>N9023040101F-90</i></p>
+        </div>
+        <div class="d-flex align-items-center gap-2">
+          <button class="btn btn-primary">+ Add to favourite</button>
+        </div>
+      </div>
+    </div>
+     <!-- Second Row: Image and Content --> 
+    <!-- Left Side (Image) -->
+    <div class="col-md-4">
+      <img
+        src="./imgs/vehicle_9023040101_0.jpg"
+        alt="Image"
+        class="img-fluid"
+      />
+    </div>
+
+    <!-- Right Side (Content) -->
+    <div class="col-md-8">
+      <h3><b>2018 TOYOTA DYNA</b></h3>
+      <a href="">4.0 Diesel- 2 tons Carry Cao- 3 Passengers- Engine N04C- Automatic TRansmission- </a>
+      
+      <h4 class="mt-3"><b>US$ 8,951</b></h4>
+      <span>FOB Price</span><br />
+
+      <div class="row my-3">
+        <div class="col-md-2 border-end border-black">
+         <span style="color: #808080; margin-right:0.3em;"> Year  </span><b> 2018/07</b>
+        </div>
+        <div class="col-md-3  border-end border-black ">
+              <span style="color: #808080; margin-right:0.3em;"> Mileage   </span><b> 432783 km </b>
+        
+        </div>
+        <div class="col-md-3 ">
+          <span style="color: #808080; margin-right:0.3em;"> Exterior Color </span><b>White</b>
+          
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-12 d-flex justify-content-end">
+          <button class="btn btn-primary mt-3 px-5">View Details</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+ <!-- Fifth Section -->
+
+   <!-- Fifth Section -->
+
+
+<div class="container-fluid ">
+ 
+ <!-- First Row: Header -->
+  <div class="row border border-black p-3 align-items-center">
+     <div class="col-12">
+      <div class="d-flex justify-content-between align-items-center">
+        <div class="d-flex align-items-center gap-2">
+          <p class="mb-0">  <i><b>#</b>N1023050279F-104</i></p>
+        </div>
+        <div class="d-flex align-items-center gap-2">
+          <button class="btn btn-primary">+ Add to favourite</button>
+        </div>
+      </div>
+    </div>
+     <!-- Second Row: Image and Content --> 
+    <!-- Left Side (Image) -->
+    <div class="col-md-4">
+      <img
+        src="./imgs/vehicle_1023050279_0.jpg"
+        alt="Image"
+        class="img-fluid"
+      />
+    </div>
+
+    <!-- Right Side (Content) -->
+    <div class="col-md-8">
+      <h3><b>2011 ISUZU FORWARD</b></h3>
+      <a href="">Truck Crane 2.9 tons- 7.3 tons Carry cap- 6MT- ABS-Airbag-AC-AM/FM </a>
+      
+      <h4 class="mt-3"><b>US$ 21,240</b></h4>
+      <span>FOB Price</span><br />
+
+      <div class="row my-3">
+        <div class="col-md-2 border-end border-black">
+         <span style="color: #808080; margin-right:0.3em;"> Year  </span><b> 2011/03</b>
+        </div>
+        <div class="col-md-3  border-end border-black ">
+              <span style="color: #808080; margin-right:0.3em;"> Mileage   </span><b> 382105 km </b>
+        
+        </div>
+        <div class="col-md-3 ">
+          <span style="color: #808080; margin-right:0.3em;"> Exterior Color </span><b>Blue</b>
+          
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-12 d-flex justify-content-end">
+          <button class="btn btn-primary mt-3 px-5">View Details</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+ <!-- Fifth Section -->
+
+  <!-- Fifth Section -->
+
+
+<div class="container-fluid ">
+ 
+ <!-- First Row: Header -->
+  <div class="row border border-black p-3 align-items-center">
+     <div class="col-12">
+      <div class="d-flex justify-content-between align-items-center">
+        <div class="d-flex align-items-center gap-2">
+          <p class="mb-0">  <i><b>#</b> N9023050133F-90</i></p>
+        </div>
+        <div class="d-flex align-items-center gap-2">
+          <button class="btn btn-primary">+ Add to favourite</button>
+        </div>
+      </div>
+    </div>
+     <!-- Second Row: Image and Content --> 
+    <!-- Left Side (Image) -->
+    <div class="col-md-4">
+      <img
+        src="./imgs/vehicle_9023050133_0.jpg"
+        alt="Image"
+        class="img-fluid"
+      />
+    </div>
+
+    <!-- Right Side (Content) -->
+    <div class="col-md-8">
+      <h3><b>2017 HINO RANGER</b></h3>
+      <a href="">Refrigerated Truck 3.3 truck- Power Lift- Engine J05E- 6MT- Key Less- ABS-Airbag-AC-AM/FM </a>
+      
+      <h4 class="mt-3"><b>US$ 12,468</b></h4>
+      <span>FOB Price</span><br />
+
+      <div class="row my-3">
+        <div class="col-md-2 border-end border-black">
+         <span style="color: #808080; margin-right:0.3em;"> Year  </span><b> 2017/01</b>
+        </div>
+        <div class="col-md-3  border-end border-black ">
+              <span style="color: #808080; margin-right:0.3em;"> Mileage   </span><b>653000 km </b>
+        
+        </div>
+        <div class="col-md-3 ">
+          <span style="color: #808080; margin-right:0.3em;"> Exterior Color </span><b>  White</b>
+          
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-12 d-flex justify-content-end">
+          <button class="btn btn-primary mt-3 px-5">View Details</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+ <!-- Fifth Section -->
+  
+  <!-- Fifth Section -->
+
+
+<div class="container-fluid ">
+ 
+ <!-- First Row: Header -->
+  <div class="row border border-black p-3 align-items-center">
+     <div class="col-12">
+      <div class="d-flex justify-content-between align-items-center">
+        <div class="d-flex align-items-center gap-2">
+          <p class="mb-0">  <i><b>#</b>N9023060083F-90</i></p>
+        </div>
+        <div class="d-flex align-items-center gap-2">
+          <button class="btn btn-primary">+ Add to favourite</button>
+        </div>
+      </div>
+    </div>
+     <!-- Second Row: Image and Content --> 
+    <!-- Left Side (Image) -->
+    <div class="col-md-4">
+      <img
+        src="./imgs/vehicle_9023060083_0.jpg"
+        alt="Image"
+        class="img-fluid"
+      />
+    </div>
+
+    <!-- Right Side (Content) -->
+    <div class="col-md-8">
+      <h3><b>
+2014 MITSUBISHI CANTER</b></h3>
+      <a href="">Hooklift 3 tons- Keyless- 5MT- Engine 4P10- ABS-Airbag-AC-AM/FM</a>
+      
+      <h4 class="mt-3"><b>US$ 15,034</b></h4>
+      <span>FOB Price</span><br />
+
+      <div class="row my-3">
+        <div class="col-md-2 border-end border-black">
+         <span style="color: #808080; margin-right:0.3em;"> Year  </span><b> 2014/03</b>
+        </div>
+        <div class="col-md-3  border-end border-black ">
+              <span style="color: #808080; margin-right:0.3em;"> Mileage   </span><b>366000 km </b>
+        
+        </div>
+        <div class="col-md-3 ">
+          <span style="color: #808080; margin-right:0.3em;"> Exterior Color </span><b>Orange</b>
+          
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-12 d-flex justify-content-end">
+          <button class="btn btn-primary mt-3 px-5">View Details</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+ <!-- Fifth Section -->
+  <div class="container-fluid ">
+ 
+ <!-- First Row: Header -->
+  <div class="row border border-black p-3 align-items-center">
+     <div class="col-12">
+      <div class="d-flex justify-content-between align-items-center">
+        <div class="d-flex align-items-center gap-2">
+          <p class="mb-0">  <i><b>#</b>N9023070022F-90</i></p>
+        </div>
+        <div class="d-flex align-items-center gap-2">
+          <button class="btn btn-primary">+ Add to favourite</button>
+        </div>
+      </div>
+    </div>
+     <!-- Second Row: Image and Content --> 
+    <!-- Left Side (Image) -->
+    <div class="col-md-4">
+      <img
+        src="./imgs/vehicle_9023070022_0.jpg"
+        alt="Image"
+        class="img-fluid"
+      />
+    </div>
+
+    <!-- Right Side (Content) -->
+    <div class="col-md-8">
+      <h3><b>
+2015 NISSAN CONDOR</b></h3>
+      <a href="">2.6 tons Refrigerated Truck- Sleeper Cab- 6MT</a>
+      
+      <h4 class="mt-3"><b>US$ 11,779</b></h4>
+      <span>FOB Price</span><br />
+
+      <div class="row my-3">
+        <div class="col-md-2 border-end border-black">
+         <span style="color: #808080; margin-right:0.3em;"> Year  </span><b> 2015/07</b>
+        </div>
+        <div class="col-md-3  border-end border-black ">
+              <span style="color: #808080; margin-right:0.3em;"> Mileage   </span><b>650946 km </b>
+        
+        </div>
+        <div class="col-md-3 ">
+          <span style="color: #808080; margin-right:0.3em;"> Exterior Color </span><b>Gray</b>
+          
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-12 d-flex justify-content-end">
+          <button class="btn btn-primary mt-3 px-5">View Details</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+ <!-- Fifth Section -->
+   <!-- Fifth Section -->
+  <div class="container-fluid ">
+ 
+ <!-- First Row: Header -->
+  <div class="row border border-black p-3 align-items-center">
+     <div class="col-12">
+      <div class="d-flex justify-content-between align-items-center">
+        <div class="d-flex align-items-center gap-2">
+          <p class="mb-0">  <i><b>#</b>N2023090208F-10</i></p>
+        </div>
+        <div class="d-flex align-items-center gap-2">
+          <button class="btn btn-primary">+ Add to favourite</button>
+        </div>
+      </div>
+    </div>
+     <!-- Second Row: Image and Content --> 
+    <!-- Left Side (Image) -->
+    <div class="col-md-4">
+      <img
+        src="./imgs/vehicle_2023090208_0.jpg"
+        alt="Image"
+        class="img-fluid"
+      />
+    </div>
+
+    <!-- Right Side (Content) -->
+    <div class="col-md-8">
+      <h3><b>
+2013 MITSUBISHI FIGHTER</b></h3>
+      <a href="">ALUMINUM WING TRUCK ☆6M60-ENGINE☆6 SPEED MANUAL☆POWER GATE☆2.45TON☆</a>
+      
+      <h4 class="mt-3"><b>US$ 6,896</b></h4>
+      <span>FOB Price</span><br />
+
+      <div class="row my-3">
+        <div class="col-md-2 border-end border-black">
+         <span style="color: #808080; margin-right:0.3em;"> Year  </span><b> 2013/08</b>
+        </div>
+        <div class="col-md-3  border-end border-black ">
+              <span style="color: #808080; margin-right:0.3em;"> Mileage   </span><b> 721384 km </b>
+        
+        </div>
+        <div class="col-md-3 ">
+          <span style="color: #808080; margin-right:0.3em;"> Exterior Color </span><b>White</b>
+          
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-12 d-flex justify-content-end">
+          <button class="btn btn-primary mt-3 px-5">View Details</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+ <!-- Fifth Section -->
+  <!-- Fifth Section -->
+   <!-- Fifth Section -->
+  <div class="container-fluid ">
+ 
+ <!-- First Row: Header -->
+  <div class="row border border-black p-3 align-items-center">
+     <div class="col-12">
+      <div class="d-flex justify-content-between align-items-center">
+        <div class="d-flex align-items-center gap-2">
+          <p class="mb-0">  <i><b>#</b> N9023090041F-90</i></p>
+        </div>
+        <div class="d-flex align-items-center gap-2">
+          <button class="btn btn-primary">+ Add to favourite</button>
+        </div>
+      </div>
+    </div>
+     <!-- Second Row: Image and Content --> 
+    <!-- Left Side (Image) -->
+    <div class="col-md-4">
+      <img
+        src="./imgs/vehicle_9023090041_0.jpg"
+        alt="Image"
+        class="img-fluid"
+      />
+    </div>
+
+    <!-- Right Side (Content) -->
+    <div class="col-md-8">
+      <h3><b>
+2016 TOYOTA DYNA</b></h3>
+      <a href="">3.5 tons Flatbody Long- 6MT</a>
+      
+      <h4 class="mt-3"><b>US$ 14,344</b></h4>
+      <span>FOB Price</span><br />
+
+      <div class="row my-3">
+        <div class="col-md-2 border-end border-black">
+         <span style="color: #808080; margin-right:0.3em;"> Year  </span><b>2016/10</b>
+        </div>
+        <div class="col-md-3  border-end border-black ">
+              <span style="color: #808080; margin-right:0.3em;"> Mileage   </span><b> 231037 km </b>
+        
+        </div>
+        <div class="col-md-3 ">
+          <span style="color: #808080; margin-right:0.3em;"> Exterior Color </span><b>White</b>
+          
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-12 d-flex justify-content-end">
+          <button class="btn btn-primary mt-3 px-5">View Details</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+ <!-- Fifth Section -->
+   <!-- Fifth Section -->
+  <div class="container-fluid ">
+ 
+ <!-- First Row: Header -->
+  <div class="row border border-black p-3 align-items-center">
+     <div class="col-12">
+      <div class="d-flex justify-content-between align-items-center">
+        <div class="d-flex align-items-center gap-2">
+          <p class="mb-0">  <i><b>#</b>N9023100019F-90</i></p>
+        </div>
+        <div class="d-flex align-items-center gap-2">
+          <button class="btn btn-primary">+ Add to favourite</button>
+        </div>
+      </div>
+    </div>
+     <!-- Second Row: Image and Content --> 
+    <!-- Left Side (Image) -->
+    <div class="col-md-4">
+      <img
+        src="./imgs/vehicle_9023100019_0.jpg"
+        alt="Image"
+        class="img-fluid"
+      />
+    </div>
+
+    <!-- Right Side (Content) -->
+    <div class="col-md-8">
+      <h3><b>
+2018 HINO RANGER</b></h3>
+<a href="">3.6 tons Flatbody- Engine 6M60- 6MT- Sleeper Cab- </a>
+      
+      
+      <h4 class="mt-3"><b>US$ 48,604</b></h4>
+      <span>FOB Price</span><br />
+
+      <div class="row my-3">
+        <div class="col-md-2 border-end border-black">
+         <span style="color: #808080; margin-right:0.3em;"> Year  </span><b>2023/07
+</b>
+        </div>
+        <div class="col-md-3  border-end border-black ">
+              <span style="color: #808080; margin-right:0.3em;"> Mileage   </span><b>213 km
+ </b>
+        
+        </div>
+        <div class="col-md-3 ">
+          <span style="color: #808080; margin-right:0.3em;"> Exterior Color </span><b> Other</b>
+          
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-12 d-flex justify-content-end">
+          <button class="btn btn-primary mt-3 px-5">View Details</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+ <!-- Fifth Section -->
+   <!-- Fifth Section -->
+  <div class="container-fluid ">
+ 
+ <!-- First Row: Header -->
+  <div class="row border border-black p-3 align-items-center">
+     <div class="col-12">
+      <div class="d-flex justify-content-between align-items-center">
+        <div class="d-flex align-items-center gap-2">
+          <p class="mb-0">  <i><b>#</b>N9023110053F-90</i></p>
+        </div>
+        <div class="d-flex align-items-center gap-2">
+          <button class="btn btn-primary">+ Add to favourite</button>
+        </div>
+      </div>
+    </div>
+     <!-- Second Row: Image and Content --> 
+    <!-- Left Side (Image) -->
+    <div class="col-md-4">
+      <img
+        src="./imgs/vehicle_9023110053_0.jpg"
+        alt="Image"
+        class="img-fluid"
+      />
+    </div>
+
+    <!-- Right Side (Content) -->
+    <div class="col-md-8">
+      <h3><b>
+2023 MITSUBISHI FIGHTER</b></h3>
+<a href="">3.6 tons Flatbody- Engine 6M60- 6MT- Sleeper Cab- </a>
+      
+      
+      <h4 class="mt-3"><b>US$ 48,604</b></h4>
+      <span>FOB Price</span><br />
+
+      <div class="row my-3">
+        <div class="col-md-2 border-end border-black">
+         <span style="color: #808080; margin-right:0.3em;"> Year  </span><b>2018/09
+</b>
+        </div>
+        <div class="col-md-3  border-end border-black ">
+              <span style="color: #808080; margin-right:0.3em;"> Mileage   </span><b> 149000 km
+ </b>
+        
+        </div>
+        <div class="col-md-3 ">
+          <span style="color: #808080; margin-right:0.3em;"> Exterior Color </span><b>White</b>
+          
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-12 d-flex justify-content-end">
+          <button class="btn btn-primary mt-3 px-5">View Details</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+ <!-- Fifth Section -->
+  <!-- Fifth Section -->
+  <div class="container-fluid ">
+ 
+ <!-- First Row: Header -->
+  <div class="row border border-black p-3 align-items-center">
+     <div class="col-12">
+      <div class="d-flex justify-content-between align-items-center">
+        <div class="d-flex align-items-center gap-2">
+          <p class="mb-0">  <i><b>#</b>N9023120018F-90</i></p>
+        </div>
+        <div class="d-flex align-items-center gap-2">
+          <button class="btn btn-primary">+ Add to favourite</button>
+        </div>
+      </div>
+    </div>
+     <!-- Second Row: Image and Content --> 
+    <!-- Left Side (Image) -->
+    <div class="col-md-4">
+      <img
+        src="./imgs/vehicle_9023120018_0.jpg"
+        alt="Image"
+        class="img-fluid"
+      />
+    </div>
+
+    <!-- Right Side (Content) -->
+    <div class="col-md-8">
+      <h3><b>
+2018 HINO RANGER</b></h3>
+<a href="">Aluminum Wing 2.7 tons- 6MT- Sleeper Cab </a>
+      
+      <h4 class="mt-3"><b>US$ 48,949</b></h4>
+      <span>FOB Price</span><br />
+
+      <div class="row my-3">
+        <div class="col-md-2 border-end border-black">
+         <span style="color: #808080; margin-right:0.3em;"> Year  </span><b>2018/10
+</b>
+        </div>
+        <div class="col-md-3  border-end border-black ">
+              <span style="color: #808080; margin-right:0.3em;"> Mileage   </span><b>71000 km
+ </b>
+        
+        </div>
+        <div class="col-md-3 ">
+          <span style="color: #808080; margin-right:0.3em;"> Exterior Color </span><b>White</b>
+          
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-12 d-flex justify-content-end">
+          <button class="btn btn-primary mt-3 px-5">View Details</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+ <!-- Fifth Section -->
+   <!-- Fifth Section -->
+  <div class="container-fluid ">
+ 
+ <!-- First Row: Header -->
+  <div class="row border border-black p-3 align-items-center">
+     <div class="col-12">
+      <div class="d-flex justify-content-between align-items-center">
+        <div class="d-flex align-items-center gap-2">
+          <p class="mb-0">  <i><b>#</b>N9023120050F-90
+</i></p>
+        </div>
+        <div class="d-flex align-items-center gap-2">
+          <button class="btn btn-primary">+ Add to favourite</button>
+        </div>
+      </div>
+    </div>
+     <!-- Second Row: Image and Content --> 
+    <!-- Left Side (Image) -->
+    <div class="col-md-4">
+      <img
+        src="./imgs/vehicle_9023120050_0.jpg"
+        alt="Image"
+        class="img-fluid"
+      />
+    </div>
+
+    <!-- Right Side (Content) -->
+    <div class="col-md-8">
+      <h3><b>
+2023 MITSUBISHI CANTER</b></h3>
+<a href="">Truck Crane 2.93 tons-Wide long- 3 Telescopic- 3.3 tons Carry Cap- 5MT- Engine 4P10 </a>
+      
+      <h4 class="mt-3"><b>US$ 52,397</b></h4>
+      <span>FOB Price</span><br />
+
+      <div class="row my-3">
+        <div class="col-md-2 border-end border-black">
+         <span style="color: #808080; margin-right:0.3em;"> Year  </span><b>2023/07
+</b>
+        </div>
+        <div class="col-md-3  border-end border-black ">
+              <span style="color: #808080; margin-right:0.3em;"> Mileage   </span><b>476 km
+ </b>
+        
+        </div>
+        <div class="col-md-3 ">
+          <span style="color: #808080; margin-right:0.3em;"> Exterior Color </span><b>White</b>
+          
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-12 d-flex justify-content-end">
+          <button class="btn btn-primary mt-3 px-5">View Details</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+ <!-- Fifth Section -->
+  
+   <!-- Fifth Section -->
+  <div class="container-fluid ">
+ 
+ <!-- First Row: Header -->
+  <div class="row border border-black p-3 align-items-center">
+     <div class="col-12">
+      <div class="d-flex justify-content-between align-items-center">
+        <div class="d-flex align-items-center gap-2">
+          <p class="mb-0">  <i><b>#</b> N9023120058F-90
+</i></p>
+        </div>
+        <div class="d-flex align-items-center gap-2">
+          <button class="btn btn-primary">+ Add to favourite</button>
+        </div>
+      </div>
+    </div>
+     <!-- Second Row: Image and Content --> 
+    <!-- Left Side (Image) -->
+    <div class="col-md-4">
+      <img
+        src="./imgs/vehicle_9023120058_0.jpg"
+        alt="Image"
+        class="img-fluid"
+      />
+    </div>
+
+    <!-- Right Side (Content) -->
+    <div class="col-md-8">
+      <h3><b>
+2023 MITSUBISHI CANTER</b></h3>
+<a href="">2 tons Aluminum Wing- 5MT- Back Monitor- Engine 4P10- AC </a>
+      
+      <h4 class="mt-3"><b>US$ 39,294</b></h4>
+      <span>FOB Price</span><br />
+
+      <div class="row my-3">
+        <div class="col-md-2 border-end border-black">
+         <span style="color: #808080; margin-right:0.3em;"> Year  </span><b> 2023/05
+</b>
+        </div>
+        <div class="col-md-3  border-end border-black ">
+              <span style="color: #808080; margin-right:0.3em;"> Mileage   </span><b>575 km
+ </b>
+        
+        </div>
+        <div class="col-md-3 ">
+          <span style="color: #808080; margin-right:0.3em;"> Exterior Color </span><b>White</b>
+          
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-12 d-flex justify-content-end">
+          <button class="btn btn-primary mt-3 px-5">View Details</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+ <!-- Fifth Section -->
+  <!-- Fifth Section -->
+  <div class="container-fluid ">
+ 
+ <!-- First Row: Header -->
+  <div class="row border border-black p-3 align-items-center">
+     <div class="col-12">
+      <div class="d-flex justify-content-between align-items-center">
+        <div class="d-flex align-items-center gap-2">
+          <p class="mb-0">  <i><b>#</b> N9023120047F-90
+</i></p>
+        </div>
+        <div class="d-flex align-items-center gap-2">
+          <button class="btn btn-primary">+ Add to favourite</button>
+        </div>
+      </div>
+    </div>
+     <!-- Second Row: Image and Content --> 
+    <!-- Left Side (Image) -->
+    <div class="col-md-4">
+      <img
+        src="./imgs/vehicle_9023120047_0.jpg"
+        alt="Image"
+        class="img-fluid"
+      />
+    </div>
+
+    <!-- Right Side (Content) -->
+    <div class="col-md-8">
+      <h3><b>
+
+2018 HINO RANGER</b></h3>
+<a href="">2.8tons aluminum Wing- 6MT- Sleeper Cab-Back Camera- AC </a>
+      
+      <h4 class="mt-3"><b>US$ 39,294</b></h4>
+      <span>FOB Price</span><br />
+
+      <div class="row my-3">
+        <div class="col-md-2 border-end border-black">
+         <span style="color: #808080; margin-right:0.3em;"> Year  </span><b>2018/09
+</b>
+        </div>
+        <div class="col-md-3  border-end border-black ">
+              <span style="color: #808080; margin-right:0.3em;"> Mileage   </span><b>134000 km
+ </b>
+        
+        </div>
+        <div class="col-md-3 ">
+          <span style="color: #808080; margin-right:0.3em;"> Exterior Color </span><b>White</b>
+          
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-12 d-flex justify-content-end">
+          <button class="btn btn-primary mt-3 px-5">View Details</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+ <!-- Fifth Section -->
+   <!-- Fifth Section -->
+  <div class="container-fluid ">
+ 
+ <!-- First Row: Header -->
+  <div class="row border border-black p-3 align-items-center">
+     <div class="col-12">
+      <div class="d-flex justify-content-between align-items-center">
+        <div class="d-flex align-items-center gap-2">
+          <p class="mb-0">  <i><b>#</b> N9023120059F-90
+</i></p>
+        </div>
+        <div class="d-flex align-items-center gap-2">
+          <button class="btn btn-primary">+ Add to favourite</button>
+        </div>
+      </div>
+    </div>
+     <!-- Second Row: Image and Content --> 
+    <!-- Left Side (Image) -->
+    <div class="col-md-4">
+      <img
+        src="./imgs/vehicle_9023120059_0.jpg"
+        alt="Image"
+        class="img-fluid"
+      />
+    </div>
+
+    <!-- Right Side (Content) -->
+    <div class="col-md-8">
+      <h3><b>
+
+2023 MITSUBISHI CANTER</b></h3>
+
+      
+      <h4 class="mt-3"><b>US$ 41,018</b></h4>
+      <span>FOB Price</span><br />
+
+      <div class="row my-3">
+        <div class="col-md-2 border-end border-black">
+         <span style="color: #808080; margin-right:0.3em;"> Year  </span><b>2023/07
+</b>
+        </div>
+        <div class="col-md-3  border-end border-black ">
+              <span style="color: #808080; margin-right:0.3em;"> Mileage   </span><b>  571 km
+ </b>
+        
+        </div>
+        <div class="col-md-3 ">
+          <span style="color: #808080; margin-right:0.3em;"> Exterior Color </span><b>White</b>
+          
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-12 d-flex justify-content-end">
+          <button class="btn btn-primary mt-3 px-5">View Details</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+ <!-- Fifth Section -->
+   <!-- Fifth Section -->
+  <div class="container-fluid ">
+ 
+ <!-- First Row: Header -->
+  <div class="row border border-black p-3 align-items-center">
+     <div class="col-12">
+      <div class="d-flex justify-content-between align-items-center">
+        <div class="d-flex align-items-center gap-2">
+          <p class="mb-0">  <i><b>#</b> N9023120078F-90
+</i></p>
+        </div>
+        <div class="d-flex align-items-center gap-2">
+          <button class="btn btn-primary">+ Add to favourite</button>
+        </div>
+      </div>
+    </div>
+     <!-- Second Row: Image and Content --> 
+    <!-- Left Side (Image) -->
+    <div class="col-md-4">
+      <img
+        src="./imgs/vehicle_9023120078_0.jpg"
+        alt="Image"
+        class="img-fluid"
+      />
+    </div>
+
+    <!-- Right Side (Content) -->
+    <div class="col-md-8">
+      <h3><b>
+
+
+2018 TOYOTA TOYOACE</b></h3>
+
+      
+      <h4 class="mt-3"><b>US$ 16,413</b></h4>
+      <span>FOB Price</span><br />
+
+      <div class="row my-3">
+        <div class="col-md-2 border-end border-black">
+         <span style="color: #808080; margin-right:0.3em;"> Year  </span><b> 2018/12
+</b>
+        </div>
+        <div class="col-md-3  border-end border-black ">
+              <span style="color: #808080; margin-right:0.3em;"> Mileage   </span><b>153041 km
+ </b>
+        
+        </div>
+        <div class="col-md-3 ">
+          <span style="color: #808080; margin-right:0.3em;"> Exterior Color </span><b>Silver</b>
+          
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-12 d-flex justify-content-end">
+          <button class="btn btn-primary mt-3 px-5">View Details</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+ <!-- Fifth Section -->
+   <!-- Fifth Section -->
+  <div class="container-fluid ">
+ 
+ <!-- First Row: Header -->
+  <div class="row border border-black p-3 align-items-center">
+     <div class="col-12">
+      <div class="d-flex justify-content-between align-items-center">
+        <div class="d-flex align-items-center gap-2">
+          <p class="mb-0">  <i><b>#</b> N9023120068F-90
+</i></p>
+        </div>
+        <div class="d-flex align-items-center gap-2">
+          <button class="btn btn-primary">+ Add to favourite</button>
+        </div>
+      </div>
+    </div>
+     <!-- Second Row: Image and Content --> 
+    <!-- Left Side (Image) -->
+    <div class="col-md-4">
+      <img
+        src="./imgs/vehicle_9023120068_0.jpg"
+        alt="Image"
+        class="img-fluid"
+      />
+    </div>
+
+    <!-- Right Side (Content) -->
+    <div class="col-md-8">
+      <h3><b>
+
+
+2018 ISUZU ELF TRUCK</b></h3>
+
+      
+      <h4 class="mt-3"><b>US$ 35,157</b></h4>
+      <span>FOB Price</span><br />
+
+      <div class="row my-3">
+        <div class="col-md-2 border-end border-black">
+         <span style="color: #808080; margin-right:0.3em;"> Year  </span><b> 2018/06
+</b>
+        </div>
+        <div class="col-md-3  border-end border-black ">
+              <span style="color: #808080; margin-right:0.3em;"> Mileage   </span><b>7000 km
+ </b>
+        
+        </div>
+        <div class="col-md-3 ">
+          <span style="color: #808080; margin-right:0.3em;"> Exterior Color </span><b> White</b>
+          
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-12 d-flex justify-content-end">
+          <button class="btn btn-primary mt-3 px-5">View Details</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+ <!-- Fifth Section -->
+   <!-- Fifth Section -->
+   <!-- Fifth Section -->
+  <div class="container-fluid ">
+ 
+ <!-- First Row: Header -->
+  <div class="row border border-black p-3 align-items-center">
+     <div class="col-12">
+      <div class="d-flex justify-content-between align-items-center">
+        <div class="d-flex align-items-center gap-2">
+          <p class="mb-0">  <i><b>#</b> N9024020014F-90
+</i></p>
+        </div>
+        <div class="d-flex align-items-center gap-2">
+          <button class="btn btn-primary">+ Add to favourite</button>
+        </div>
+      </div>
+    </div>
+     <!-- Second Row: Image and Content --> 
+    <!-- Left Side (Image) -->
+    <div class="col-md-4">
+      <img
+        src="./imgs/vehicle_9024020014_0.jpg"
+        alt="Image"
+        class="img-fluid"
+      />
+    </div>
+
+    <!-- Right Side (Content) -->
+    <div class="col-md-8">
+      <h3><b>
+
+
+2018 ISUZU FORWARD</b></h3>
+<a href="">5.19 Refrigerated Van★4HK1-ENGINE★5700kg★6MT★KEY-LESS★BACKCAMERA★SideDoor★</a>
+
+      
+      <h4 class="mt-3"><b>US$ 26,757</b></h4>
+      <span>FOB Price</span><br />
+
+      <div class="row my-3">
+        <div class="col-md-2 border-end border-black">
+         <span style="color: #808080; margin-right:0.3em;"> Year  </span><b> 2018/09
+</b>
+        </div>
+        <div class="col-md-3  border-end border-black ">
+              <span style="color: #808080; margin-right:0.3em;"> Mileage   </span><b>425210 km
+ </b>
+        
+        </div>
+        <div class="col-md-3 ">
+          <span style="color: #808080; margin-right:0.3em;"> Exterior Color </span><b> White</b>
+          
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-12 d-flex justify-content-end">
+          <button class="btn btn-primary mt-3 px-5">View Details</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+ <!-- Fifth Section -->
+
+  <!-- Fifth Section -->
+  <div class="container-fluid ">
+ 
+ <!-- First Row: Header -->
+  <div class="row border border-black p-3 align-items-center">
+     <div class="col-12">
+      <div class="d-flex justify-content-between align-items-center">
+        <div class="d-flex align-items-center gap-2">
+          <p class="mb-0">  <i><b>#</b>  N9024020051F-90
+</i></p>
+        </div>
+        <div class="d-flex align-items-center gap-2">
+          <button class="btn btn-primary">+ Add to favourite</button>
+        </div>
+      </div>
+    </div>
+     <!-- Second Row: Image and Content --> 
+    <!-- Left Side (Image) -->
+    <div class="col-md-4">
+      <img
+        src="./imgs/vehicle_9024020051_0.jpg"
+        alt="Image"
+        class="img-fluid"
+      />
+    </div>
+
+    <!-- Right Side (Content) -->
+    <div class="col-md-8">
+      <h3><b>
+
+
+2021 TOYOTA PIXIS TRUCK</b></h3>
+<a href="">650 FLAT BODY★KF-ENGINE★GASOLENE★350kg★5MT★Extra SAⅢ★4WD★LED★</a>
+
+      
+      <h4 class="mt-3"><b>US$ 9,503</b></h4>
+      <span>FOB Price</span><br />
+
+      <div class="row my-3">
+        <div class="col-md-2 border-end border-black">
+         <span style="color: #808080; margin-right:0.3em;"> Year  </span><b>2021/06
+
+</b>
+        </div>
+        <div class="col-md-3  border-end border-black ">
+              <span style="color: #808080; margin-right:0.3em;"> Mileage   </span><b>17440 km
+ </b>
+        
+        </div>
+        <div class="col-md-3 ">
+          <span style="color: #808080; margin-right:0.3em;"> Exterior Color </span><b>Green</b>
+          
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-12 d-flex justify-content-end">
+          <button class="btn btn-primary mt-3 px-5">View Details</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+ <!-- Fifth Section -->
+   <!-- Fifth Section -->
+  <div class="container-fluid ">
+ 
+ <!-- First Row: Header -->
+  <div class="row border border-black p-3 align-items-center">
+     <div class="col-12">
+      <div class="d-flex justify-content-between align-items-center">
+        <div class="d-flex align-items-center gap-2">
+          <p class="mb-0">  <i><b>#</b> Y2024020222F-12
+</i></p>
+        </div>
+        <div class="d-flex align-items-center gap-2">
+          <button class="btn btn-primary">+ Add to favourite</button>
+        </div>
+      </div>
+    </div>
+     <!-- Second Row: Image and Content --> 
+    <!-- Left Side (Image) -->
+    <div class="col-md-4">
+      <img
+        src="./imgs/vehicle_2024020222_0.jpg"
+        alt="Image"
+        class="img-fluid"
+      />
+    </div>
+
+    <!-- Right Side (Content) -->
+    <div class="col-md-8">
+      <h3><b>
+
+
+2006 BMW X3</b></h3>
+<a href="">2.5Si 4WD- PANORAMIC ROOF-Key Less- AW- ABS-Airbag-AAC-CD</a>
+
+      
+      <h4 class="mt-3"><b>US$ 1,586</b></h4>
+      <span>FOB Price</span><br />
+
+      <div class="row my-3">
+        <div class="col-md-2 border-end border-black">
+         <span style="color: #808080; margin-right:0.3em;"> Year  </span><b>2006/10
+
+</b>
+        </div>
+        <div class="col-md-3  border-end border-black ">
+              <span style="color: #808080; margin-right:0.3em;"> Mileage   </span><b>85985 km
+ </b>
+        
+        </div>
+        <div class="col-md-3 ">
+          <span style="color: #808080; margin-right:0.3em;"> Exterior Color </span><b> Silver</b>
+          
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-12 d-flex justify-content-end">
+          <button class="btn btn-primary mt-3 px-5">View Details</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+ <!-- Fifth Section -->
+  <!-- Fifth Section -->
+   <!-- Fifth Section -->
+  <div class="container-fluid ">
+ 
+ <!-- First Row: Header -->
+  <div class="row border border-black p-3 align-items-center">
+     <div class="col-12">
+      <div class="d-flex justify-content-between align-items-center">
+        <div class="d-flex align-items-center gap-2">
+          <p class="mb-0">  <i><b>#</b> N2024030091F-21
+</i></p>
+        </div>
+        <div class="d-flex align-items-center gap-2">
+          <button class="btn btn-primary">+ Add to favourite</button>
+        </div>
+      </div>
+    </div>
+     <!-- Second Row: Image and Content --> 
+    <!-- Left Side (Image) -->
+    <div class="col-md-4">
+      <img
+        src="./imgs/vehicle_2024030091_0.jpg"
+        alt="Image"
+        class="img-fluid"
+      />
+    </div>
+
+    <!-- Right Side (Content) -->
+    <div class="col-md-8">
+      <h3><b>
+
+
+2014 NISSAN NV350 CARAVAN</b></h3>
+<a href="">HANDI CAB HIGH ROOF ★10 SEATER★KEYLESS★GOOD CONDITION★</a>
+
+      
+      <h4 class="mt-3"><b>US$ 4,620</b></h4>
+      <span>FOB Price</span><br />
+
+      <div class="row my-3">
+        <div class="col-md-2 border-end border-black">
+         <span style="color: #808080; margin-right:0.3em;"> Year  </span><b> 2014/01
+
+</b>
+        </div>
+        <div class="col-md-3  border-end border-black ">
+              <span style="color: #808080; margin-right:0.3em;"> Mileage   </span><b>120571 km
+ </b>
+        
+        </div>
+        <div class="col-md-3 ">
+          <span style="color: #808080; margin-right:0.3em;"> Exterior Color </span><b>White</b>
+          
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-12 d-flex justify-content-end">
+          <button class="btn btn-primary mt-3 px-5">View Details</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+ <!-- Fifth Section -->
+
+ <!-- Fifth Section -->
+  <div class="container-fluid ">
+ 
+ <!-- First Row: Header -->
+  <div class="row border border-black p-3 align-items-center">
+     <div class="col-12">
+      <div class="d-flex justify-content-between align-items-center">
+        <div class="d-flex align-items-center gap-2">
+          <p class="mb-0">  <i><b>#</b>N9024030023F-90
+</i></p>
+        </div>
+        <div class="d-flex align-items-center gap-2">
+          <button class="btn btn-primary">+ Add to favourite</button>
+        </div>
+      </div>
+    </div>
+     <!-- Second Row: Image and Content --> 
+    <!-- Left Side (Image) -->
+    <div class="col-md-4">
+      <img
+        src="./imgs/vehicle_9024030023_0.jpg"
+        alt="Image"
+        class="img-fluid"
+      />
+    </div>
+
+    <!-- Right Side (Content) -->
+    <div class="col-md-8">
+      <h3><b>
+
+
+2015 MITSUBISHI CANTER</b></h3>
+<a href="">2.99FLAT　BODY★4P10-ENGINE★4700KG★5MT★175PS★HIDHEADLIGHT</a>
+
+      
+      <h4 class="mt-3"><b>US$ 10,896</b></h4>
+      <span>FOB Price</span><br />
+
+      <div class="row my-3">
+        <div class="col-md-2 border-end border-black">
+         <span style="color: #808080; margin-right:0.3em;"> Year  </span><b>  2015/12
+
+
+</b>
+        </div>
+        <div class="col-md-3  border-end border-black ">
+              <span style="color: #808080; margin-right:0.3em;"> Mileage   </span><b>332000 km
+ </b>
+        
+        </div>
+        <div class="col-md-3 ">
+          <span style="color: #808080; margin-right:0.3em;"> Exterior Color </span><b>White</b>
+          
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-12 d-flex justify-content-end">
+          <button class="btn btn-primary mt-3 px-5">View Details</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+ <!-- Fifth Section -->
+
+  <!-- Fifth Section -->
+  <div class="container-fluid ">
+ 
+ <!-- First Row: Header -->
+  <div class="row border border-black p-3 align-items-center">
+     <div class="col-12">
+      <div class="d-flex justify-content-between align-items-center">
+        <div class="d-flex align-items-center gap-2">
+          <p class="mb-0">  <i><b>#</b>N1024030164F-25
+</i></p>
+        </div>
+        <div class="d-flex align-items-center gap-2">
+          <button class="btn btn-primary">+ Add to favourite</button>
+        </div>
+      </div>
+    </div>
+     <!-- Second Row: Image and Content --> 
+    <!-- Left Side (Image) -->
+    <div class="col-md-4">
+      <img
+        src="./imgs/vehicle_1024030164_0.jpg"
+        alt="Image"
+        class="img-fluid"
+      />
+    </div>
+
+    <!-- Right Side (Content) -->
+    <div class="col-md-8">
+      <h3><b>
+
+
+2005 NISSAN ATLAS</b></h3>
+<a href="">3.0FLAT BODY☆1450kg☆5MT☆4JG2-ENGINE☆DIESEL☆LOW FLOOR☆AIRBAG</a>
+
+      
+      <h4 class="mt-3"><b>US$ 9,379</b></h4>
+      <span>FOB Price</span><br />
+
+      <div class="row my-3">
+        <div class="col-md-2 border-end border-black">
+         <span style="color: #808080; margin-right:0.3em;"> Year  </span><b> 2005/01
+
+
+</b>
+        </div>
+        <div class="col-md-3  border-end border-black ">
+              <span style="color: #808080; margin-right:0.3em;"> Mileage   </span><b>68390 km
+ </b>
+        
+        </div>
+        <div class="col-md-3 ">
+          <span style="color: #808080; margin-right:0.3em;"> Exterior Color </span><b>White</b>
+          
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-12 d-flex justify-content-end">
+          <button class="btn btn-primary mt-3 px-5">View Details</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+ <!-- Fifth Section -->
+   <!-- Fifth Section -->
+  <div class="container-fluid ">
+ 
+ <!-- First Row: Header -->
+  <div class="row border border-black p-3 align-items-center">
+     <div class="col-12">
+      <div class="d-flex justify-content-between align-items-center">
+        <div class="d-flex align-items-center gap-2">
+          <p class="mb-0">  <i><b>#</b>N9024030061F-90
+</i></p>
+        </div>
+        <div class="d-flex align-items-center gap-2">
+          <button class="btn btn-primary">+ Add to favourite</button>
+        </div>
+      </div>
+    </div>
+     <!-- Second Row: Image and Content --> 
+    <!-- Left Side (Image) -->
+    <div class="col-md-4">
+      <img
+        src="./imgs/vehicle_9024030061_0.jpg"
+        alt="Image"
+        class="img-fluid"
+      />
+    </div>
+
+    <!-- Right Side (Content) -->
+    <div class="col-md-8">
+      <h3><b>
+
+
+2018 TOYOTA DYNA</b></h3>
+<a href="">2.98 RouteVan★1KD-ENGINE★1250kg★Rear butterfly doors★Diesel★5MT★ABS★</a>
+
+      
+      <h4 class="mt-3"><b>US$ 14,813</b></h4>
+      <span>FOB Price</span><br />
+
+      <div class="row my-3">
+        <div class="col-md-2 border-end border-black">
+         <span style="color: #808080; margin-right:0.3em;"> Year  </span><b>2018/09
+
+
+</b>
+        </div>
+        <div class="col-md-3  border-end border-black ">
+              <span style="color: #808080; margin-right:0.3em;"> Mileage   </span><b> 84199 km
+ </b>
+        
+        </div>
+        <div class="col-md-3 ">
+          <span style="color: #808080; margin-right:0.3em;"> Exterior Color </span><b>White</b>
+          
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-12 d-flex justify-content-end">
+          <button class="btn btn-primary mt-3 px-5">View Details</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+ <!-- Fifth Section -->
+  <!-- Fifth Section -->
+   <!-- Fifth Section -->
+  <div class="container-fluid ">
+ 
+ <!-- First Row: Header -->
+  <div class="row border border-black p-3 align-items-center">
+     <div class="col-12">
+      <div class="d-flex justify-content-between align-items-center">
+        <div class="d-flex align-items-center gap-2">
+          <p class="mb-0">  <i><b>#</b>N9024040014F-90
+</i></p>
+        </div>
+        <div class="d-flex align-items-center gap-2">
+          <button class="btn btn-primary">+ Add to favourite</button>
+        </div>
+      </div>
+    </div>
+     <!-- Second Row: Image and Content --> 
+    <!-- Left Side (Image) -->
+    <div class="col-md-4">
+      <img
+        src="./imgs/vehicle_9024040014_0.jpg"
+        alt="Image"
+        class="img-fluid"
+      />
+    </div>
+
+    <!-- Right Side (Content) -->
+    <div class="col-md-8">
+      <h3><b>
+
+
+2014 DAIHATSU HIJET TRUCK</b></h3>
+<a href="">660 Refrigerated Van★KF-ENGINE★GASOLENE★350kg★DENSO★AT★SideDoor★</a>
+
+      
+      <h4 class="mt-3"><b>US$ 10,744</b></h4>
+      <span>FOB Price</span><br />
+
+      <div class="row my-3">
+        <div class="col-md-2 border-end border-black">
+         <span style="color: #808080; margin-right:0.3em;"> Year  </span><b> 2014/03
+
+
+</b>
+        </div>
+        <div class="col-md-3  border-end border-black ">
+              <span style="color: #808080; margin-right:0.3em;"> Mileage   </span><b> 2345 km
+ </b>
+        
+        </div>
+        <div class="col-md-3 ">
+          <span style="color: #808080; margin-right:0.3em;"> Exterior Color </span><b>White</b>
+          
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-12 d-flex justify-content-end">
+          <button class="btn btn-primary mt-3 px-5">View Details</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+ <!-- Fifth Section -->
+  <!-- Fifth Section -->
+  <div class="container-fluid ">
+ 
+ <!-- First Row: Header -->
+  <div class="row border border-black p-3 align-items-center">
+     <div class="col-12">
+      <div class="d-flex justify-content-between align-items-center">
+        <div class="d-flex align-items-center gap-2">
+          <p class="mb-0">  <i><b>#</b>N1024040279F-25
+</i></p>
+        </div>
+        <div class="d-flex align-items-center gap-2">
+          <button class="btn btn-primary">+ Add to favourite</button>
+        </div>
+      </div>
+    </div>
+     <!-- Second Row: Image and Content --> 
+    <!-- Left Side (Image) -->
+    <div class="col-md-4">
+      <img
+        src="./imgs/vehicle_1024040279_0.jpg"
+        alt="Image"
+        class="img-fluid"
+      />
+    </div>
+
+    <!-- Right Side (Content) -->
+    <div class="col-md-8">
+      <h3><b>
+
+
+2016 ISUZU ELF TRUCK</b></h3>
+<a href="">3.0FLAT BODY 4WD☆6PERSONS☆5MT☆1150kg☆DIESEL☆4JJ1-ENGINE</a>
+
+      
+      <h4 class="mt-3"><b>US$ 19,861</b></h4>
+      <span>FOB Price</span><br />
+
+      <div class="row my-3">
+        <div class="col-md-2 border-end border-black">
+         <span style="color: #808080; margin-right:0.3em;"> Year  </span><b>2016/10
+
+
+</b>
+        </div>
+        <div class="col-md-3  border-end border-black ">
+              <span style="color: #808080; margin-right:0.3em;"> Mileage   </span><b> 78280 km
+ </b>
+        
+        </div>
+        <div class="col-md-3 ">
+          <span style="color: #808080; margin-right:0.3em;"> Exterior Color </span><b>White</b>
+          
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-12 d-flex justify-content-end">
+          <button class="btn btn-primary mt-3 px-5">View Details</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+ <!-- Fifth Section -->
+   <!-- Fifth Section -->
+  <div class="container-fluid ">
+ 
+ <!-- First Row: Header -->
+  <div class="row border border-black p-3 align-items-center">
+     <div class="col-12">
+      <div class="d-flex justify-content-between align-items-center">
+        <div class="d-flex align-items-center gap-2">
+          <p class="mb-0">  <i><b>#</b> N9024040061F-90
+</i></p>
+        </div>
+        <div class="d-flex align-items-center gap-2">
+          <button class="btn btn-primary">+ Add to favourite</button>
+        </div>
+      </div>
+    </div>
+     <!-- Second Row: Image and Content --> 
+    <!-- Left Side (Image) -->
+    <div class="col-md-4">
+      <img
+        src="./imgs/vehicle_9024040061_0.jpg"
+        alt="Image"
+        class="img-fluid"
+      />
+    </div>
+
+    <!-- Right Side (Content) -->
+    <div class="col-md-8">
+      <h3><b>
+
+
+2017 MITSUBISHI FIGHTER</b></h3>
+<a href="">7.54 Hook Roll☆6M60-ENGINE☆3.6TON☆Leather seats☆</a>
+
+      
+      <h4 class="mt-3"><b>US$ 52,052</b></h4>
+      <span>FOB Price</span><br />
+
+      <div class="row my-3">
+        <div class="col-md-2 border-end border-black">
+         <span style="color: #808080; margin-right:0.3em;"> Year  </span><b> 2017/03
+
+
+</b>
+        </div>
+        <div class="col-md-3  border-end border-black ">
+              <span style="color: #808080; margin-right:0.3em;"> Mileage   </span><b>31385 km
+ </b>
+        
+        </div>
+        <div class="col-md-3 ">
+          <span style="color: #808080; margin-right:0.3em;"> Exterior Color </span><b>Brown</b>
+          
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-12 d-flex justify-content-end">
+          <button class="btn btn-primary mt-3 px-5">View Details</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+ <!-- Fifth Section -->
+   <!-- Fifth Section -->
+  <div class="container-fluid ">
+ 
+ <!-- First Row: Header -->
+  <div class="row border border-black p-3 align-items-center">
+     <div class="col-12">
+      <div class="d-flex justify-content-between align-items-center">
+        <div class="d-flex align-items-center gap-2">
+          <p class="mb-0">  <i><b>#</b> N2024050019F-10
+</i></p>
+        </div>
+        <div class="d-flex align-items-center gap-2">
+          <button class="btn btn-primary">+ Add to favourite</button>
+        </div>
+      </div>
+    </div>
+     <!-- Second Row: Image and Content --> 
+    <!-- Left Side (Image) -->
+    <div class="col-md-4">
+      <img
+        src="./imgs/vehicle_2024050019_0.jpg"
+        alt="Image"
+        class="img-fluid"
+      />
+    </div>
+
+    <!-- Right Side (Content) -->
+    <div class="col-md-8">
+      <h3><b>
+
+
+2016 LEXUS NX
+</b></h3>
+<a href="">NX200tFSports☆Clean Interior☆Good Condition☆45,000KM☆Leather Seat☆Power Seat☆</a>
+
+      
+      <h4 class="mt-3"><b>US$ 13,792</b></h4>
+      <span>FOB Price</span><br />
+
+      <div class="row my-3">
+        <div class="col-md-2 border-end border-black">
+         <span style="color: #808080; margin-right:0.3em;"> Year  </span><b>2016/05
+
+
+</b>
+        </div>
+        <div class="col-md-3  border-end border-black ">
+              <span style="color: #808080; margin-right:0.3em;"> Mileage   </span><b> 45786 km
+ </b>
+        
+        </div>
+        <div class="col-md-3 ">
+          <span style="color: #808080; margin-right:0.3em;"> Exterior Color </span><b>Pearl</b>
+          
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-12 d-flex justify-content-end">
+          <button class="btn btn-primary mt-3 px-5">View Details</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+ <!-- Fifth Section -->
+   <!-- Fifth Section -->
+  <div class="container-fluid ">
+ 
+ <!-- First Row: Header -->
+  <div class="row border border-black p-3 align-items-center">
+     <div class="col-12">
+      <div class="d-flex justify-content-between align-items-center">
+        <div class="d-flex align-items-center gap-2">
+          <p class="mb-0">  <i><b>#</b>  N1024050042F-17
+</i></p>
+        </div>
+        <div class="d-flex align-items-center gap-2">
+          <button class="btn btn-primary">+ Add to favourite</button>
+        </div>
+      </div>
+    </div>
+     <!-- Second Row: Image and Content --> 
+    <!-- Left Side (Image) -->
+    <div class="col-md-4">
+      <img
+        src="./imgs/vehicle_1024050042_0.jpg"
+        alt="Image"
+        class="img-fluid"
+      />
+    </div>
+
+    <!-- Right Side (Content) -->
+    <div class="col-md-8">
+      <h3><b>
+
+
+2011 HINO RANGER
+</b></h3>
+<a href="">6.4FLAT BODY☆2.93TON CRANE☆2750kg☆6MT☆J07E-ENGINE☆210PS</a>
+
+      
+      <h4 class="mt-3"><b>US$ 22,619</b></h4>
+      <span>FOB Price</span><br />
+
+      <div class="row my-3">
+        <div class="col-md-2 border-end border-black">
+         <span style="color: #808080; margin-right:0.3em;"> Year  </span><b>  2011/08
+
+
+</b>
+        </div>
+        <div class="col-md-3  border-end border-black ">
+              <span style="color: #808080; margin-right:0.3em;"> Mileage   </span><b> 62000 km
+ </b>
+        
+        </div>
+        <div class="col-md-3 ">
+          <span style="color: #808080; margin-right:0.3em;"> Exterior Color </span><b>Pearl</b>
+          
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-12 d-flex justify-content-end">
+          <button class="btn btn-primary mt-3 px-5">View Details</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+ <!-- Fifth Section -->
+   <!-- Fifth Section -->
+  <div class="container-fluid ">
+ 
+ <!-- First Row: Header -->
+  <div class="row border border-black p-3 align-items-center">
+     <div class="col-12">
+      <div class="d-flex justify-content-between align-items-center">
+        <div class="d-flex align-items-center gap-2">
+          <p class="mb-0">  <i><b>#</b> N9024050047F-90
+</i></p>
+        </div>
+        <div class="d-flex align-items-center gap-2">
+          <button class="btn btn-primary">+ Add to favourite</button>
+        </div>
+      </div>
+    </div>
+     <!-- Second Row: Image and Content --> 
+    <!-- Left Side (Image) -->
+    <div class="col-md-4">
+      <img
+        src="./imgs/vehicle_9024050047_0.jpg"
+        alt="Image"
+        class="img-fluid"
+      />
+    </div>
+
+    <!-- Right Side (Content) -->
+    <div class="col-md-8">
+      <h3><b>
+
+
+
+2020 MITSUBISHI FIGHTER
+</b></h3>
+<a href="">7.54FLAT BODY☆6M60-ENGINE☆3.9TON☆6MT☆BED☆</a>
+
+      
+      <h4 class="mt-3"><b>US$ 36,881</b></h4>
+      <span>FOB Price</span><br />
+
+      <div class="row my-3">
+        <div class="col-md-2 border-end border-black">
+         <span style="color: #808080; margin-right:0.3em;"> Year  </span><b>2020/04
+
+
+</b>
+        </div>
+        <div class="col-md-3  border-end border-black ">
+              <span style="color: #808080; margin-right:0.3em;"> Mileage   </span><b>100000 km
+ </b>
+        
+        </div>
+        <div class="col-md-3 ">
+          <span style="color: #808080; margin-right:0.3em;"> Exterior Color </span><b>Select</b>
+          
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-12 d-flex justify-content-end">
+          <button class="btn btn-primary mt-3 px-5">View Details</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+ <!-- Fifth Section -->
+
+    <!-- Fifth Section -->
+  <div class="container-fluid ">
+ 
+ <!-- First Row: Header -->
+  <div class="row border border-black p-3 align-items-center">
+     <div class="col-12">
+      <div class="d-flex justify-content-between align-items-center">
+        <div class="d-flex align-items-center gap-2">
+          <p class="mb-0">  <i><b>#</b>  N2024050280A-10
+</i></p>
+        </div>
+        <div class="d-flex align-items-center gap-2">
+          <button class="btn btn-primary">+ Add to favourite</button>
+        </div>
+      </div>
+    </div>
+     <!-- Second Row: Image and Content --> 
+    <!-- Left Side (Image) -->
+    <div class="col-md-4">
+      <img
+        src="./imgs/vehicle_2024050280_0.jpg"
+        alt="Image"
+        class="img-fluid"
+      />
+    </div>
+
+    <!-- Right Side (Content) -->
+    <div class="col-md-8">
+      <h3><b>
+
+
+
+2010 SUBARU LEGACY TOURING WAGON
+</b></h3>
+<a href="">2.5I☆Smart Key☆Back Monitor☆Clean Interior☆Good Condition☆</a>
+
+      
+      <h4 class="mt-3"><b>US$ 759</b></h4>
+      <span>FOB Price</span><br />
+
+      <div class="row my-3">
+        <div class="col-md-2 border-end border-black">
+         <span style="color: #808080; margin-right:0.3em;"> Year  </span><b>2010/03
+
+
+</b>
+        </div>
+        <div class="col-md-3  border-end border-black ">
+              <span style="color: #808080; margin-right:0.3em;"> Mileage   </span><b>93642 km
+
+ </b>
+        
+        </div>
+        <div class="col-md-3 ">
+          <span style="color: #808080; margin-right:0.3em;"> Exterior Color </span><b>Blue</b>
+          
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-12 d-flex justify-content-end">
+          <button class="btn btn-primary mt-3 px-5">View Details</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+ <!-- Fifth Section -->
+
+ <!-- Fifth Section -->
+  <div class="container-fluid ">
+ 
+ <!-- First Row: Header -->
+  <div class="row border border-black p-3 align-items-center">
+     <div class="col-12">
+      <div class="d-flex justify-content-between align-items-center">
+        <div class="d-flex align-items-center gap-2">
+          <p class="mb-0">  <i><b>#</b>  N1024060003F-17
+</i></p>
+        </div>
+        <div class="d-flex align-items-center gap-2">
+          <button class="btn btn-primary">+ Add to favourite</button>
+        </div>
+      </div>
+    </div>
+     <!-- Second Row: Image and Content --> 
+    <!-- Left Side (Image) -->
+    <div class="col-md-4">
+      <img
+        src="./imgs/vehicle_1024060003_0.jpg"
+        alt="Image"
+        class="img-fluid"
+      />
+    </div>
+
+    <!-- Right Side (Content) -->
+    <div class="col-md-8">
+      <h3><b>
+
+2017 HINO RANGER
+</b></h3>
+<a href="">5.1DUMP TRUCK☆3550kg☆J05E-ENGINE☆6MT☆ABS☆FOG LAMP
+</a>
+
+      
+      <h4 class="mt-3"><b>US$ 21,240</b></h4>
+      <span>FOB Price</span><br />
+
+      <div class="row my-3">
+        <div class="col-md-2 border-end border-black">
+         <span style="color: #808080; margin-right:0.3em;"> Year  </span><b>2017/06
+
+
+</b>
+        </div>
+        <div class="col-md-3  border-end border-black ">
+              <span style="color: #808080; margin-right:0.3em;"> Mileage   </span><b>35128 km
+
+ </b>
+        
+        </div>
+        <div class="col-md-3 ">
+          <span style="color: #808080; margin-right:0.3em;"> Exterior Color </span><b>White</b>
+          
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-12 d-flex justify-content-end">
+          <button class="btn btn-primary mt-3 px-5">View Details</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+ <!-- Fifth Section -->
+  <!-- Fifth Section -->
+  <div class="container-fluid ">
+ 
+ <!-- First Row: Header -->
+  <div class="row border border-black p-3 align-items-center">
+     <div class="col-12">
+      <div class="d-flex justify-content-between align-items-center">
+        <div class="d-flex align-items-center gap-2">
+          <p class="mb-0">  <i><b>#</b>N1024060005F-25
+</i></p>
+        </div>
+        <div class="d-flex align-items-center gap-2">
+          <button class="btn btn-primary">+ Add to favourite</button>
+        </div>
+      </div>
+    </div>
+     <!-- Second Row: Image and Content --> 
+    <!-- Left Side (Image) -->
+    <div class="col-md-4">
+      <img
+        src="./imgs/vehicle_1024060005_0.jpg"
+        alt="Image"
+        class="img-fluid"
+      />
+    </div>
+
+    <!-- Right Side (Content) -->
+    <div class="col-md-8">
+      <h3><b>
+        2021 ISUZU ELF TRUCK
+</b></h3>
+<a href="">3TONS DUMP★4JZI-ENGIN★KEY RESS★POWER WINDOW★6SPEED MT
+</a>
+
+      
+      <h4 class="mt-3"><b>US$ 22,481
+</b></h4>
+      <span>FOB Price</span><br />
+
+      <div class="row my-3">
+        <div class="col-md-2 border-end border-black">
+         <span style="color: #808080; margin-right:0.3em;"> Year  </span><b>2021/07
+
+
+
+</b>
+        </div>
+        <div class="col-md-3  border-end border-black ">
+              <span style="color: #808080; margin-right:0.3em;"> Mileage   </span><b>73154 km
+
+ </b>
+        
+        </div>
+        <div class="col-md-3 ">
+          <span style="color: #808080; margin-right:0.3em;"> Exterior Color </span><b>White</b>
+          
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-12 d-flex justify-content-end">
+          <button class="btn btn-primary mt-3 px-5">View Details</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+ <!-- Fifth Section -->
+   <!-- Fifth Section -->
+  <div class="container-fluid">
+ 
+ <!-- First Row: Header -->
+  <div class="row border border-black p-3 align-items-center">
+     <div class="col-12">
+      <div class="d-flex justify-content-between align-items-center">
+        <div class="d-flex align-items-center gap-2">
+          <p class="mb-0">  <i><b>#</b>N9024060022F-90
+</i></p>
+        </div>
+        <div class="d-flex align-items-center gap-2">
+          <button class="btn btn-primary">+ Add to favourite</button>
+        </div>
+      </div>
+    </div>
+     <!-- Second Row: Image and Content --> 
+    <!-- Left Side (Image) -->
+    <div class="col-md-4">
+      <img
+        src="./imgs/vehicle_9024060022_0.jpg"
+        alt="Image"
+        class="img-fluid"
+      />
+    </div>
+
+    <!-- Right Side (Content) -->
+    <div class="col-md-8">
+      <h3><b>
+     2023 NISSAN CONDOR
+</b></h3>
+<a href="">5.19 Hook Roll☆4HK1-ENGINE☆3.7TON☆With radio control☆
+</a>
+
+      
+      <h4 class="mt-3"><b>US$ 62,396
+</b></h4>
+      <span>FOB Price</span><br />
+
+      <div class="row my-3">
+        <div class="col-md-2 border-end border-black">
+         <span style="color: #808080; margin-right:0.3em;"> Year  </span><b>  2023/12
+
+
+
+
+</b>
+        </div>
+        <div class="col-md-3  border-end border-black ">
+              <span style="color: #808080; margin-right:0.3em;"> Mileage   </span><b>298 km
+
+ </b>
+        
+        </div>
+        <div class="col-md-3 ">
+          <span style="color: #808080; margin-right:0.3em;"> Exterior Color </span><b>White</b>
+          
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-12 d-flex justify-content-end">
+          <button class="btn btn-primary mt-3 px-5">View Details</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+ <!-- Fifth Section -->
+
+  <!-- Fifth Section -->
+  <div class="container-fluid ">
+ 
+ <!-- First Row: Header -->
+  <div class="row border border-black p-3 align-items-center">
+     <div class="col-12">
+      <div class="d-flex justify-content-between align-items-center">
+        <div class="d-flex align-items-center gap-2">
+          <p class="mb-0">  <i><b>#</b> N9024060056F-90
+</i></p>
+        </div>
+        <div class="d-flex align-items-center gap-2">
+          <button class="btn btn-primary">+ Add to favourite</button>
+        </div>
+      </div>
+    </div>
+     <!-- Second Row: Image and Content --> 
+    <!-- Left Side (Image) -->
+    <div class="col-md-4">
+      <img
+        src="./imgs/vehicle_9024060056_0.jpg"
+        alt="Image"
+        class="img-fluid"
+      />
+    </div>
+
+    <!-- Right Side (Content) -->
+    <div class="col-md-8">
+      <h3><b>
+   2015 TOYOTA DYNA
+</b></h3>
+<a href="">4.0☆N04C-ENGINE☆LONG FLAT BODY☆4.5TON☆6MT☆
+</a>
+
+      
+      <h4 class="mt-3"><b>US$ 22,537
+</b></h4>
+      <span>FOB Price</span><br />
+
+      <div class="row my-3">
+        <div class="col-md-2 border-end border-black">
+         <span style="color: #808080; margin-right:0.3em;"> Year  </span><b>2015/12
+
+
+
+
+</b>
+        </div>
+        <div class="col-md-3  border-end border-black ">
+              <span style="color: #808080; margin-right:0.3em;"> Mileage   </span><b>86580 km
+
+ </b>
+        
+        </div>
+        <div class="col-md-3 ">
+          <span style="color: #808080; margin-right:0.3em;"> Exterior Color </span><b>Green</b>
+          
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-12 d-flex justify-content-end">
+          <button class="btn btn-primary mt-3 px-5">View Details</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+ <!-- Fifth Section -->
+
+  <!-- Fifth Section -->
+  <div class="container-fluid ">
+ 
+ <!-- First Row: Header -->
+  <div class="row border border-black p-3 align-items-center">
+     <div class="col-12">
+      <div class="d-flex justify-content-between align-items-center">
+        <div class="d-flex align-items-center gap-2">
+          <p class="mb-0">  <i><b>#</b>Y2024070015A-21
+</i></p>
+        </div>
+        <div class="d-flex align-items-center gap-2">
+          <button class="btn btn-primary">+ Add to favourite</button>
+        </div>
+      </div>
+    </div>
+     <!-- Second Row: Image and Content --> 
+    <!-- Left Side (Image) -->
+    <div class="col-md-4">
+      <img
+        src="./imgs/vehicle_2024070015_0.jpg"
+        alt="Image"
+        class="img-fluid"
+      />
+    </div>
+
+    <!-- Right Side (Content) -->
+    <div class="col-md-8">
+      <h3><b>
+   
+2012 VOLKSWAGEN GOLF VARIANT
+</b></h3>
+<a href="">1.4 TSI COMFORTLINE PREMIUM ★ALLOY WHEELS★NAVI,CD PLAYER★HID★ROOF RAIL★KEYLESS★FOG LAMP★GOOD CONDITI
+</a>
+
+      
+      <h4 class="mt-3"><b>US$ 965
+
+</b></h4>
+      <span>FOB Price</span><br />
+
+      <div class="row my-3">
+        <div class="col-md-2 border-end border-black">
+         <span style="color: #808080; margin-right:0.3em;"> Year  </span><b>2012/03
+
+
+
+
+</b>
+        </div>
+        <div class="col-md-3  border-end border-black ">
+              <span style="color: #808080; margin-right:0.3em;"> Mileage   </span><b> 78050 km
+
+
+ </b>
+        
+        </div>
+        <div class="col-md-3 ">
+          <span style="color: #808080; margin-right:0.3em;"> Exterior Color </span><b>Silver</b>
+          
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-12 d-flex justify-content-end">
+          <button class="btn btn-primary mt-3 px-5">View Details</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+ <!-- Fifth Section -->
+
+  <!-- Fifth Section -->
+  <div class="container-fluid ">
+ 
+ <!-- First Row: Header -->
+  <div class="row border border-black p-3 align-items-center">
+     <div class="col-12">
+      <div class="d-flex justify-content-between align-items-center">
+        <div class="d-flex align-items-center gap-2">
+          <p class="mb-0">  <i><b>#</b>N2024060405F-10
+
+</i></p>
+        </div>
+        <div class="d-flex align-items-center gap-2">
+          <button class="btn btn-primary">+ Add to favourite</button>
+        </div>
+      </div>
+    </div>
+     <!-- Second Row: Image and Content --> 
+    <!-- Left Side (Image) -->
+    <div class="col-md-4">
+      <img
+        src="./imgs/vehicle_2024060405_0.jpg"
+        alt="Image"
+        class="img-fluid"
+      />
+    </div>
+
+    <!-- Right Side (Content) -->
+    <div class="col-md-8">
+      <h3><b>
+   
+2007 TOYOTA TOWNACE VAN
+</b></h3>
+<a href="">1.8-Keyless-6MT-ABS-Airbag-AC
+</a>
+
+      
+      <h4 class="mt-3"><b>US$ 1,931
+
+
+</b></h4>
+      <span>FOB Price</span><br />
+
+      <div class="row my-3">
+        <div class="col-md-2 border-end border-black">
+         <span style="color: #808080; margin-right:0.3em;"> Year  </span><b>  2007/06
+
+
+
+
+
+</b>
+        </div>
+        <div class="col-md-3  border-end border-black ">
+              <span style="color: #808080; margin-right:0.3em;"> Mileage   </span><b> 126290 km
+
+
+ </b>
+        
+        </div>
+        <div class="col-md-3 ">
+          <span style="color: #808080; margin-right:0.3em;"> Exterior Color </span><b>Silver</b>
+          
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-12 d-flex justify-content-end">
+          <button class="btn btn-primary mt-3 px-5">View Details</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+ <!-- Fifth Section -->
+  <!-- Fifth Section -->
+  <div class="container-fluid ">
+ 
+ <!-- First Row: Header -->
+  <div class="row border border-black p-3 align-items-center">
+     <div class="col-12">
+      <div class="d-flex justify-content-between align-items-center">
+        <div class="d-flex align-items-center gap-2">
+          <p class="mb-0">  <i><b>#</b> N9024060068F-90
+
+</i></p>
+        </div>
+        <div class="d-flex align-items-center gap-2">
+          <button class="btn btn-primary">+ Add to favourite</button>
+        </div>
+      </div>
+    </div>
+     <!-- Second Row: Image and Content --> 
+    <!-- Left Side (Image) -->
+    <div class="col-md-4">
+      <img
+        src="./imgs/vehicle_9024060068_0.jpg"
+        alt="Image"
+        class="img-fluid"
+      />
+    </div>
+
+    <!-- Right Side (Content) -->
+    <div class="col-md-8">
+      <h3><b>
+   
+2014 MITSUBISHI FIGHTER
+</b></h3>
+<a href="">7.54FLAT BODY☆6M60-ENGINE☆8.284TON☆6MT☆BED☆
+</a>
+
+      
+      <h4 class="mt-3"><b>US$ 27,447
+
+
+</b></h4>
+      <span>FOB Price</span><br />
+
+      <div class="row my-3">
+        <div class="col-md-2 border-end border-black">
+         <span style="color: #808080; margin-right:0.3em;"> Year  </span><b> 2014/06
+
+
+
+
+
+</b>
+        </div>
+        <div class="col-md-3  border-end border-black ">
+              <span style="color: #808080; margin-right:0.3em;"> Mileage   </span><b> 288522 km
+
+
+ </b>
+        
+        </div>
+        <div class="col-md-3 ">
+          <span style="color: #808080; margin-right:0.3em;"> Exterior Color </span><b>Green</b>
+          
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-12 d-flex justify-content-end">
+          <button class="btn btn-primary mt-3 px-5">View Details</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+ <!-- Fifth Section -->
+
+ <!-- Sixth Section -->
+
+      
+   <div class="container-fluid ">
+    <div class="d-flex justify-content-end ">
+      
+     
+      
+      <!-- Right Side: Arrow Buttons -->
+      <div>
+        <button class="btn btn-outline-secondary bg-secondary rounded-1 text-white disabled fs-2 py-0 px-3">
+          &lsaquo; <!-- Left angle bracket: ‹ -->
+        </button>
+        <button class="btn btn-outline-primary text-white rounded-1  bg-primary fs-2 py-0 px-3">
+          &rsaquo; <!-- Right angle bracket: › -->
+        </button>
+      </div>
+      
+    </div>
+  </div>
+  
+<!-- Sixth Section -->
+
+  <!--Seveth Section -->
+ <hr width="100%"  />
+
+  <!-- seventh Section -->
+   <!-- ======== Footer ======-->
+     <!-- ======== Footer ======-->
+
+    <div class="container-fluid ">
+        <div class="row text-dark text-center text-md-start footer m-auto">
+          <div class="col-md-4">
+
+            <a class="navbar-brand " href="#"
+            ><img src="imgs/logo.png" width="250px" alt=""
+          /></a>
+
+            <ul class="list-unstyled mt-5">
+              <p>5-2 Nishihaiagari, Kamigaoka-cho, Toyota City, Aichi Prefecture, 473-0931, Japan</p>
+              <p>Tel +81-565-85-0602
+                </p>
+                <p>Fax +81-565-85-0606</p>
+              <button class="btn btn-primary w-75 my-3
+              ">Contact Us</button>
+             
+            <hr width="75%" class="my-1" />
+            Terms of Use
+            <hr width="75%" class="my-1" />
+            Privacy Policy
+            <hr width="75%" class="my-1" />
+            Cookie Policy
+            </ul>
+          </div>
+          <div class="col-md-2">
+            <h6 ><b>Contents</b></h6>
+            <hr width="100%"/>
+            <ul class="list-unstyled ">
+              <p></p>
+<p>How to Buy</p>
+<p>About Us</p>
+<p>Local Introduction</p>
+<p>Contact Us</p>
+            
+            </ul>
+          </div>
+          <div class="col-md-1">
+            <h6><b>Makers</b></h6>
+              <hr width="250%"/>
+            <ul class="list-unstyled">
+             <p>Couper</p>
+             <p>Convertiable</p>
+             <p>Sedan</p>
+             <p>Wagon</p>
+             <p>Convertiable</p>
+             <p>Sedan</p>
+             <p>Wagon</p>
+            </ul>
+          </div>
+          <div class="col-md-1 mt-5">
+            
+           
+            <ul class="list-unstyled">
+             <p>MAZDA</p>
+             <p>BMW</p>
+             <p>LAND ROVER</p>
+             <p>ISUZU</p>
+             <p>JEEP</p>
+             
+            </ul>
+          </div>
+          <div class="col-md-2">
+            <h6><b>
+              Body Types
+            </b></h6>
+              <hr width="110%"/>
+            <ul class="list-unstyled fs-6">
+             <p>Couper
+              </p>
+              <p>Convertiable</p>
+              <p>
+                Sedan</p>
+                <p>Wagon</p>
+                <p>Van</p>
+                <p>Truck</p>
+                <p>SUV</p>
+            </ul>
+          </div>
+          <div class="col-md-2 py-0">
+            <h6><b>Find Car</b></h6>
+              <hr width="100%"/>
+            <ul class="list-unstyled">
+              <p>Browse All Stock </p>
+              <p> Sale Cars</p>
+              <p> Recommended Cars</p>
+                <p>Luxury Cars</p>
+            </ul>
+          </div>
+         
+        </div>
+      <div class="row">
+          <div class="col-12 d-flex justify-content-end ">
+            <i class="fab fa-facebook-square px-2 fs-2 text-primary "></i>
+            <i class="fab fa-instagram px-2 fs-2 text-primary "></i>
+
+          </div>
+          <div class="col-12 d-flex justify-content-end mt-2">
+            
+            <p>Copyright © Real Motor Japan All Rights Reserved.</p>
+          </div>
+        </div>
+     
+      </div>
+
+      
+        
+    
+    <!-- ======== Footer ======-->
+    
+    <!-- ======== Footer ======-->
+<!-- contact page -->
+<div id="contactModal" style="display:none; position:fixed; top:50%; left:50%; 
+transform:translate(-50%, -50%); background:white; padding:10px; 
+box-shadow:0 0 10px #000; z-index:1000; border-radius: 6px; width: 450px; ">
+  
+  <span style="float:right; cursor:pointer; font-size:20px;" 
+        onclick="document.getElementById('contactModal').style.display='none'">
+    &times;
+  </span>
+
+  <h2 style="margin-top: 0;">Contact Us</h2>
+  <p><i class="fas fa-envelope"></i> <a href="">info@realmotor.jp</a></p>
+  <p><i class="fab fa-whatsapp"></i> <a href="">WhatsApp: +81 803 541 9928</a></p>
+  <p><i class="fas fa-phone"></i> <a href="">Telephone: +81 565 85 0602</a></p>
+  <p><i class="fab fa-facebook"></i> <a href="">Facebook Page</a></p>
+  <p><i class="fab fa-instagram"></i> <a href="
+    ">Instagram Profile</a></p>
+</div>
+<!-- contact page -->
+</body>
+
+</html>

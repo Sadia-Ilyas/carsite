@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>About Us</title>
+
+    <!-- <link rel="stylesheet" href="css/bootstrap.min.css"> -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.0/css/all.min.css"
+    />
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <style>
+      html {
+        scroll-behavior: smooth;
+      }
+      * {
+        font-family: Arial, sans-serif;
+        box-sizing: border-box;
+      }
+nav.navbar {
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      background-color: white/* Sticky color */
+       
+    }
+  
+    .navbar .nav-link i {
+      font-size: 16px;
+    }
+    .navbar .nav-link {
+      display: flex;
+      align-items: center;
+      font-size: 14px;
+      margin-right: 30px;
+      font-weight: bold;
+      color:#343434;
+    }
+
+    .navbar .nav-link:hover {
+      color: black;
+    }
+
+    .navbar-brand img {
+      max-height: 60px;
+      transition: all 0.3s ease;
+    }
+ .navbar.signup-btn {
+      padding: 10px;
+      border-radius: 5px;
+      border: 1px solid rgba(0, 57, 192, 0.9);
+      color:rgba(0, 57, 192, 0.9);
+    }
+
+    .navbar.login-btn {
+      padding: 12px;
+      border-radius: 5px;
+      background-color:rgba(0, 57, 192, 0.9) ;
+      border: 1px solid rgba(0, 57, 192, 0.9);
+      color:white;
+    }
+
+      /* cover section */
+      .cover {
+        position: relative;
+        background-image: url("imgs/banner.9b15487546d932bac673.webp");
+        background-repeat: no-repeat;
+        height: 50vh;
+        background-size: cover;
+        background-position: center;
+        z-index: 0;
+      }
+      .cover-overlay {
+        position: absolute;
+        top: 0; /* covers from top of .cover */
+        left: 0;
+        width: 100%;
+        height: 100%; /* exactly same height as .cover */
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 1;
+      }
+      .cover-content {
+        position: absolute;
+        top: 55%;
+        left: 43%;
+        /* width: 100%;
+        height: 100%; */
+        z-index: 1;
+        color: white;
+      }
+      .cover-content h1 {
+        font-size: 35px;
+        font-weight: bold;
+      }
+      /* cover section */
+     
+      
+      .custom-wrapper{
+width: 95%;
+      }
+     .container-fluid .btn {
+        font-size: 14px;
+        background-color: #0642f4;
+      }
+  /* mission */
+  .container-fluid .mission {
+   background: linear-gradient(to right, #5053FE , #9133EA);
+
+  }
+  /* mission */
+  /* facilties */
+  .img-container {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+.img-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+  /* facilties */
+  
+ 
+  /* footer */
+  .container-fluid .footer ul p
+  {
+    font-size: 14px;
+    font-weight: bold;
+  }
+  .floating-div {
+  opacity: 0;
+  transform: translateY(-30px);
+  animation: fadeInDown 1s ease forwards;
+}
+
+.floating-div .form-box {
+  opacity: 1; /* No need to animate individually */
+  transform: none;
+  animation: none;
+
+}
+/* footer */
+
+    </style>
+  </head>
+
+  <body>
+ <!-- Navbar -->
+   <nav class="navbar navbar-expand-lg  p-0 navmanu">
+    <div class="container-fluid d-flex align-items-center">
+      <!-- Logo -->
+      <a class="navbar-brand" href="index.html">
+        <img id="navbar-logo" src="./imgs/logo.png" alt="Logo" />
+      </a>
+
+      <!-- Mobile toggle -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- Navigation and buttons -->
+      <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
+        <!-- Center nav items -->
+        <ul class="navbar-nav mx-auto gap-4">
+          <li class="nav-item"><a class="nav-link" href="./carstock.html">Car Stock</a></li>
+          <li class="nav-item"><a class="nav-link" href="howtobuy.html">How to Buy</a></li>
+          <li class="nav-item"><a class="nav-link" href="aboutus.html">About Us</a></li>
+          <li class="nav-item"><a class="nav-link" href="localintro.html">Local Introduction</a></li>
+          <li class="nav-item">
+            <a class="nav-link" href="#" onclick="document.getElementById('contactModal').style.display='block'; return false;">Contact Us</a>
+          </li>
+        </ul>
+
+        <!-- Right side login/signup -->
+        <div class="d-flex align-items-center me-3 gap-3 left-nav">
+  <a class="nav-link signup-btn d-flex align-items-center " href="#">
+    <i class="fas fa-user-plus me-1"></i>Sign Up
+  </a>
+  <a class="nav-link login-btn d-flex align-items-center " href="#">
+    <i class="fas fa-arrow-right-to-bracket me-1"></i>Log In
+  </a>
+</div>
+
+      </div>
+    </div>
+  </nav>
+    <!-- Navbar -->
+
+    <!-- Cover Setion-->
+    <div class="cover">
+      <div class="cover-overlay"></div>
+      <div class="cover-content">
+        <h1 class="display-4">About Us</h1>
+      </div>
+    </div>
+
+    <!-- Cover Setion-->
+     <!-- company secion -->
+   
+<!-- company secion -->
+<div class="container-fluid mt-4 p-3 bg-white shadow rounded custom-wrapper">
+  <div class="row">
+    <div class="col-md-4 text-center">
+      <img src="./imgs/aboutus.6121ad95e8e488b04ba2.webp" alt="Company Logo" class="img-fluid ">
+    </div>
+    <div class="col-md-8">
+      <h4 class="text-primary">Company Profile</h4>
+      <p class="fw-bold fs-4">Real Motor Japan</p>
+      <p> A division of Yanagisawa HD Co., Ltd.</p>
+      <p><strong style="color:#6B7280">President:</strong> Morishita Kazuki</p>
+      <p><strong style="color:#6B7280">Established:</strong> 1998</p>
+    </div>
+  </div>
+</div>
+
+<!-- company secion -->
+ <!-- contact details -->
+ <div class="container-fluid custom-wrapper mt-5 rounded border-1 shadow ">
+    <div class="row p-3">
+       <div class="col-md-6"> <h4 >Contact Details</h4>
+        <p><i class="fas fa-phone text-primary"></i> +81-565-85-0602</p>
+        <p><i class="fas fa-phone text-primary"></i> +81-565-85-0606</p>
+        <p><i class="fas fa-envelope text-primary"></i> <a href="">info@realmotor.jp</a></p></div>
+       <div class="col-md-6">
+          <h4 class="text-primary">Address</h4>
+        <p>5-2 Nishihaiagari, Kamigaoka-cho, Toyota City, Aichi Prefecture, 473-0931, Japan</p>
+
+        <!-- Google Map -->
+        <div class="mt-3 ">
+          <iframe 
+            src="https://www.google.com/maps?q=5-2 Nishihaiagari, Kamigaoka-cho, Toyota City, Aichi Prefecture, 473-0931, Japan&output=embed" 
+            width="50%" 
+            height="200" 
+            
+            style="border:0;" 
+            allowfullscreen 
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade ">
+          </iframe>
+        </div>
+       </div>
+    </div>
+ </div>
+
+
+ <!-- contact details -->
+  <!-- our mission -->
+   <div class="container-fluid custom-wrapper  mt-5 ">
+    <div class="row">
+        <div class="col-md-12 p-3  mission rounded-4 ">
+            <h3 style="text-align: center; font-weight: bold;">Our Mission</h3>
+            <p style="width: 80%; margin-left: 10%; text-align: center;">At Real Motor Japan, we are committed to providing high-quality automotive solutions to our customers worldwide. With our extensive experience and dedication to excellence, we strive to be your trusted partner in the automotive industry.</p>
+        </div>
+    </div>
+   </div>
+  <!-- our mission -->
+<!-- Facilities -->
+  <h2 style="text-align: center;" class="mt-5 fw-bold">Our Team & Facilities</h2>
+  <div class="container-fluid px-0 custom-wrapper ">
+  <div class="row no-gutters ">
+    <!-- First Div -->
+    <div class="col-md-6 ">
+      <div class="img-container rounded-4 ">
+        <img src="./imgs/IMG_8047.webp" alt="Image 1">
+      </div>
+    </div>
+
+    <!-- Second Div -->
+    <div class="col-md-6 ">
+      <div class="img-container rounded-4">
+        <img src="./imgs/IMG_8035 (1).webp" alt="Image 2">
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container-fluid px-0 custom-wrapper mt-4 ">
+  <div class="row no-gutters ">
+    <!-- First Div -->
+    <div class="col-md-12 ">
+      <div class="img-container rounded-4 ">
+        <img src="./imgs/20240105初顔合わせー１ (1).jpg" alt="Image 1">
+      </div>
+    </div>
+
+    
+  </div>
+</div>
+
+  <!-- Facilities -->
+
+<hr class="width:100% mt-5">
+   
+       <!-- ======== Footer ======-->
+
+    <div class="container-fluid ">
+        <div class="row text-dark text-center text-md-start footer m-auto">
+          <div class="col-md-4">
+
+            <a class="navbar-brand " href="#"
+            ><img src="imgs/logo.png" width="250px" alt=""
+          /></a>
+
+            <ul class="list-unstyled mt-5">
+              <p>5-2 Nishihaiagari, Kamigaoka-cho, Toyota City, Aichi Prefecture, 473-0931, Japan</p>
+              <p>Tel +81-565-85-0602
+                </p>
+                <p>Fax +81-565-85-0606</p>
+              <button class="btn btn-primary w-75 my-3
+              ">Contact Us</button>
+             
+            <hr width="75%" class="my-1" />
+            Terms of Use
+            <hr width="75%" class="my-1" />
+            Privacy Policy
+            <hr width="75%" class="my-1" />
+            Cookie Policy
+            </ul>
+          </div>
+          <div class="col-md-2">
+            <h6 ><b>Contents</b></h6>
+            <hr width="100%"/>
+            <ul class="list-unstyled ">
+              <p></p>
+<p>How to Buy</p>
+<p>About Us</p>
+<p>Local Introduction</p>
+<p>Contact Us</p>
+            
+            </ul>
+          </div>
+          <div class="col-md-1">
+            <h6><b>Makers</b></h6>
+              <hr width="250%"/>
+            <ul class="list-unstyled">
+             <p>Couper</p>
+             <p>Convertiable</p>
+             <p>Sedan</p>
+             <p>Wagon</p>
+             <p>Convertiable</p>
+             <p>Sedan</p>
+             <p>Wagon</p>
+            </ul>
+          </div>
+          <div class="col-md-1 mt-5">
+            
+           
+            <ul class="list-unstyled">
+             <p>MAZDA</p>
+             <p>BMW</p>
+             <p>LAND ROVER</p>
+             <p>ISUZU</p>
+             <p>JEEP</p>
+             
+            </ul>
+          </div>
+          <div class="col-md-2">
+            <h6><b>
+              Body Types
+            </b></h6>
+              <hr width="110%"/>
+            <ul class="list-unstyled fs-6">
+             <p>Couper
+              </p>
+              <p>Convertiable</p>
+              <p>
+                Sedan</p>
+                <p>Wagon</p>
+                <p>Van</p>
+                <p>Truck</p>
+                <p>SUV</p>
+            </ul>
+          </div>
+          <div class="col-md-2 py-0">
+            <h6><b>Find Car</b></h6>
+              <hr width="100%"/>
+            <ul class="list-unstyled">
+              <p>Browse All Stock </p>
+              <p> Sale Cars</p>
+              <p> Recommended Cars</p>
+                <p>Luxury Cars</p>
+            </ul>
+          </div>
+         
+        </div>
+      <div class="row">
+          <div class="col-12 d-flex justify-content-end ">
+            <i class="fab fa-facebook-square px-2 fs-2 text-primary "></i>
+            <i class="fab fa-instagram px-2 fs-2 text-primary "></i>
+
+          </div>
+          <div class="col-12 d-flex justify-content-end mt-2">
+            
+            <p>Copyright © Real Motor Japan All Rights Reserved.</p>
+          </div>
+        </div>
+     
+      </div>
+
+      
+        
+    
+    <!-- ======== Footer ======-->
+     <!-- contact page -->
+<div id="contactModal" style="display:none; position:fixed; top:50%; left:50%; 
+transform:translate(-50%, -50%); background:white; padding:10px; 
+box-shadow:0 0 10px #000; z-index:1000; border-radius: 6px; width: 450px; ">
+  
+  <span style="float:right; cursor:pointer; font-size:20px;" 
+        onclick="document.getElementById('contactModal').style.display='none'">
+    &times;
+  </span>
+
+  <h2 style="margin-top: 0;">Contact Us</h2>
+  <p><i class="fas fa-envelope"></i> <a href="">info@realmotor.jp</a></p>
+  <p><i class="fab fa-whatsapp"></i> <a href="">WhatsApp: +81 803 541 9928</a></p>
+  <p><i class="fas fa-phone"></i> <a href="">Telephone: +81 565 85 0602</a></p>
+  <p><i class="fab fa-facebook"></i> <a href="">Facebook Page</a></p>
+  <p><i class="fab fa-instagram"></i> <a href="
+    ">Instagram Profile</a></p>
+</div>
+<!-- contact page -->
+  </body>
+</html>

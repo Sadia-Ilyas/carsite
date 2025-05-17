@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Details</title>
+  <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.0/css/all.min.css"
+    />
+  <style>
+    html{
+  scroll-behavior: smooth
+}
+* {
+  font-family: BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+    
+/* Top bar */
+
+.top-bar,
+    .navmanu {
+    
+      background-color: rgba(0, 57, 192, 0.9);
+      opacity: rgba(0, 58, 192, 0.234);
+    }
+    
+
+    .top-bar .currency {
+      border-color: white;
+      color: white;
+      background-color: rgba(255, 255, 255, 0.15);
+      margin-left: 0px;
+      margin-top: 5px;
+    }
+
+    .top-bar .currency option {
+      color: black;
+    }
+
+      /* Navbar Sticky Fix  after scroll*/
+    nav.navbar {
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      background-color: white; /* Sticky color */
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Bottom shadow */
+       
+    }
+
+    .navbar .nav-link i {
+      font-size: 16px;
+    }
+
+    .navbar .nav-link {
+      display: flex;
+      align-items: center;
+      font-size: 14px;
+      margin-right: 30px;
+      font-weight: bold;
+      color:black;
+    }
+
+    .navbar .nav-link:hover {
+      color: #343434;
+    }
+
+    .navbar-brand img {
+      max-height: 60px;
+      transition: all 0.3s ease;
+    }
+    /* for inpection */
+    
+    .custom-radio {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    
+    padding: 4px 10px;
+    background-color: #808080;
+    border-radius: 999px;
+    cursor: pointer;
+    margin-right: 15px;
+    user-select: none;
+    transition: background 0.3s ease;
+  }
+  .custom-radio input[type="radio"] {
+    display: none;
+  }
+
+  .custom-radio .circle {
+    width: 20px;
+    height: 20px;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    background-color: #fff;
+    margin-right: 10px;
+    transition: background-color 0.3s ease;
+  }
+
+  .custom-radio input[type="radio"]:checked + .circle {
+    background-color: #007bff;
+    border-color: #007bff;
+  }
+    /* for inpection */
+/* agreement */
+ .agreement-container {
+      display: flex;
+      align-items: center;
+     
+      max-width: 500px;
+    }
+
+    .agreement-text {
+      font-size: 14px;
+    }
+   
+
+   
+/* agreement */
+
+
+/* imgs section */
+ .car-container {
+      display: flex;
+      flex-wrap: nowrap; /* Allows wrap on small screens */
+      gap: 20px;
+      justify-content: center;
+      padding-top: 20px;
+      padding-left: 0px;
+      padding-right: 0px;
+    }
+
+    .car-card {
+      
+      width: 220px;
+      padding: 15px;
+      border-radius: 10px;
+      text-align: center;
+    }
+
+    .car-card img {
+      width: 100%;
+      height: 140px;
+      object-fit: cover; 
+      margin-bottom: 10px;
+    }
+
+    .car-card h5 {
+      font-size: 16px;
+      margin: 10px 0 5px;
+    }
+
+    .car-card span {
+      display: block;
+      font-size: 14px;
+      margin-bottom: 4px;
+    }
+
+    @media (max-width: 768px) {
+      .car-card {
+        width: 45%;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .car-card {
+        width: 100%;
+      }
+    }
+/* imgs section */
+
+  /* footer */
+  .container-fluid .footer ul p
+  {
+    font-size: 14px;
+    font-weight: bold;
+  }
+  .floating-div {
+  opacity: 0;
+  transform: translateY(-30px);
+  animation: fadeInDown 1s ease forwards;
+}
+
+.floating-div .form-box {
+  opacity: 1; /* No need to animate individually */
+  transform: none;
+  animation: none;
+}
+
+@keyframes fadeInDown {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+  /* footer */
+
+  .slider-container {
+  width: 100%;
+  max-width: 600px;
+  margin: auto;
+  position: relative;
+}
+
+.main-image {
+  position: relative;
+}
+
+.main-image img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.prev, .next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0,0,0,0.5);
+  border: none;
+  color: white;
+  padding: 10px;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+.prev { left: 10px; }
+.next { right: 10px; }
+
+.thumbnails {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.thumbnails img {
+  width: 80px;
+  height: 60px;
+  cursor: pointer;
+  object-fit: cover;
+  border-radius: 5px;
+  opacity: 0.6;
+  transition: 0.3s;
+}
+
+.thumbnails img:hover,
+.thumbnails img.active {
+  opacity: 1;
+  border: 2px solid #007bff;
+}
+
+  </style>
+</head>
+<body>
+     <!-- navbar -->
+      <!-- Top Bar -->
+  <div class="top-bar currencyborder">
+    <div class="container-fluid text-end">
+      <form class="d-inline-block">
+        <label for="currency" class="text-white fw-bold">Currency:</label>
+        <select class="form-select form-select-sm d-inline-block w-auto currency" id="currency">
+          <option value="usd">USD</option>
+          <option value="eur">EUR</option>
+          <option value="aud">AUD</option>
+          <option value="gbp">GBP</option>
+          <option value="cad">CAD</option>
+          <option value="yen">YEN</option>
+        </select>
+      </form>
+    </div>
+  </div>
+
+  <!-- Sticky Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark p-0 navmanu">
+    <div class="container-fluid d-flex align-items-center">
+      <!-- Logo -->
+      <a class="navbar-brand" href="index.html">
+        <img id="navbar-logo" src="./imgs/logo.png" alt="Logo" />
+      </a>
+
+      <!-- Mobile toggle -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <p class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- Navigation and buttons -->
+      <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
+        <!-- Center nav items -->
+        <ul class="navbar-nav mx-auto gap-4">
+          <li class="nav-item"><a class="nav-link" href="./carstock.html">Car Stock</a></li>
+          <li class="nav-item"><a class="nav-link" href="howtobuy.html">How to Buy</a></li>
+          <li class="nav-item"><a class="nav-link" href="aboutus.html">About Us</a></li>
+          <li class="nav-item"><a class="nav-link" href="localintro.html">Local Introduction</a></li>
+          <li class="nav-item">
+            <a class="nav-link" href="#" onclick="document.getElementById('contactModal').style.display='block'; return false;">Contact Us</a>
+          </li>
+        </ul>
+
+        <!-- Right side login/signup -->
+        <div class="d-flex align-items-center me-3 gap-3 left-nav">
+  <a class="nav-link signup-btn d-flex align-items-center " href="#">
+    <i class="fas fa-user-plus me-1"></i>Sign Up
+  </a>
+  <a class="nav-link login-btn d-flex align-items-center " href="#">
+    <i class="fas fa-arrow-right-to-bracket me-1"></i>Log In
+  </a>
+</div>
+
+      </div>
+    </div>
+  </nav>
+</header>
+    <!-- navbar -->
+
+
+ <!-- details image and content -->
+
+ <div class="container-fluid mt-5">
+    
+    <div class="row">
+        <div class="col-md-6 bg-light"><h1>2012 MAZDA CX-5</h1>
+       <a href="">2.2★BACK CAMERA★CLEAN INTERIOR★</a>
+        <div class="row">
+            <div class="col-md-12">
+              <div class="slider-container">
+  <div class="main-image">
+    <img id="mainSlide" src="./imgs/1747297515626.jpg" alt="Vehicle" />
+    <button class="prev" onclick="prevImage()">❮</button>
+    <button class="next" onclick="nextImage()">❯</button>
+  </div>
+  <div class="thumbnails">
+    <img src="./imgs/1747297393558.jpg" onclick="changeImage(0)" />
+    <img src="./imgs//1747297515626.jpg" onclick="changeImage(1)" />
+    <img src="./imgs/1747297574047.jpg" onclick="changeImage(2)" />
+    <img src="./imgs/1747182859475.jpg" onclick="changeImage(3)" />
+  </div>
+</div>
+
+
+            </div>
+        </div>
+        
+        
+        
+        </div
+        
+        >
+
+        <div class="col-md-6 bg-light">
+           <div class="d-flex align-items-center gap-2 justify-content-end">
+          <button class="btn btn-primary">+ Add to favourite</button>
+        </div>
+            <div class="row">
+                <div class="col-md-6"><h1>US$
+17,763</h1><p>Current FOB Price</p></div>
+                <div class="col-md-6"><h1>
+
+US$
+0
+</h1><p>Total Estimated Price</p></div>
+            </div>
+
+           <div class="col-md-12  ">
+             <div class="form-box">
+  <h5 class="bold">Total Price Calculator</h5>
+    <div class="row">
+      <!-- Column 1 -->
+      <div class="col-md-6 mb-4">
+        <select class="form-select mb-3">
+          <option selected>Select Country</option>
+          <option>Zambiya</option>
+          <option>Tanzaniya</option>
+        
+          <option>Mozambique</option>
+          <option>Kenya</option>
+        </select>
+       
+        
+      </div>
+         <!-- Column 2-->
+   
+         <div class="col-md-6 mb-4">
+  <input type="text" class="form-control form-select" placeholder="Select Port" />
+</div>
+
+   
+<div class="col-md-6 mb-4">
+<label class="custom-radio">
+  <input type="radio" name="example"  />
+  <span class="circle"></span>
+
+</label>
+<span class="text" >Inspection</span>
+</div>
+<div class="col-md-6 mb-4">
+  <label class="custom-radio">
+    <input type="radio" name="example"  />
+    <span class="circle"></span>
+  
+  </label>
+  <span class="text" >Inspection</span>
+  </div>
+     
+    </div>
+   
+
+  </div>
+
+           </div>
+        
+           <div class="col-md-12 ">
+            <input class=" border border-black rounded-2  w-100 px-5 " placeholder="Write your message here" ></input>
+
+            <div class="agreement-container mt-3">
+                 <input type="checkbox" id="agree" class="agreement-checkbox">
+    <label class="agreement-text" for="agree">
+      I agree to Privacy Policy and Terms of Agreement
+    </label>
+   
+            </div>
+<div class="row">
+    <div class="col-md-6 mt-3">
+        
+    <button class="btn btn-primary ">send Inquiry</button>
+    </div>
+   </div>
+
+    </div>
+    </div>
+
+    
+
+ </div>
+
+
+ <div class="container-fluid">
+  <div class="row">
+    <div class="col-md-6"><h1>Full Vehicle Specifications</h1>
+    <div class="row">
+        <div class="col-md-5 bg-secondary">Make</div>
+        <div class="col-md-5 border border-black mx-3">TOYOTA</div>
+    </div>
+    <div class="row">
+        <div class="col-md-5 bg-secondary mt-3">Model</div>
+        <div class="col-md-5 border border-black mx-3  mt-3">TOYOACE</div>
+    </div>
+    <div class="row">
+        <div class="col-md-5 bg-secondary mt-3">Registration Year</div>
+        <div class="col-md-5 border border-black mx-3 mt-3">2017 / 02</div>
+    </div>
+    <div class="row">
+        <div class="col-md-5 bg-secondary mt-3">Reference Number</div>
+        <div class="col-md-5 border border-black mx-3 mt-3">N9022020133F-90</div>
+    </div>
+    <div class="row">
+        <div class="col-md-5 bg-secondary mt-3">Model Code</div>
+        <div class="col-md-5 border border-black mx-3 mt-3">QDF-KDY221</div>
+    </div>
+     <div class="row">
+        <div class="col-md-5 bg-secondary mt-3">Engine Displacement (cc)</div>
+        <div class="col-md-5 border border-black mx-3 mt-3">3000cc</div>
+    </div>
+    
+     <div class="row">
+        <div class="col-md-5 bg-secondary mt-3">Steering</div>
+        <div class="col-md-5 border border-black mx-3 mt-3">Right</div>
+    </div>
+    
+     <div class="row">
+        <div class="col-md-5 bg-secondary mt-3">External Color</div>
+        <div class="col-md-5 border border-black mx-3 mt-3">White</div>
+    </div>
+    
+     <div class="row">
+        <div class="col-md-5 bg-secondary mt-3">Number of Seats</div>
+        <div class="col-md-5 border border-black mx-3 mt-3">3</div>
+    </div>
+    
+     <div class="row">
+        <div class="col-md-5 bg-secondary mt-3">Doors</div>
+        <div class="col-md-5 border border-black mx-3 mt-3">2</div>
+    </div>
+     <div class="row">
+        <div class="col-md-5 bg-secondary mt-3">Fuel</div>
+        <div class="col-md-5 border border-black mx-3 mt-3">Diesel</div>
+    </div>
+     <div class="row">
+        <div class="col-md-5 bg-secondary mt-3">Drive Type</div>
+        <div class="col-md-5 border border-black mx-3 mt-3">2-wheel drive</div>
+    </div>
+     <div class="row">
+        <div class="col-md-5 bg-secondary mt-3">Dimension</div>
+        <div class="col-md-5 border border-black mx-3 mt-3">
+443cm x 169cm x 197cm (14.74899959564209m³) </div>
+    </div>
+     <div class="row">
+        <div class="col-md-5 bg-secondary mt-3">Body Type</div>
+        <div class="col-md-5 border border-black mx-3 mt-3">Truck</div>
+    </div>
+    
+    
+    
+    </div>
+    <div class="col-md-6">
+         
+<div class="row">
+    <div class="col-md-12">
+        <h1> Features</h1>
+    </div>
+    <!-- safety -->
+    <div class="col-md-12">
+        <h4>Safety System</h4>
+    </div>
+   <div class="row ">
+    <div class="col-md-3 bg-secondary mx-1 "><a class="text-light text-decoration-none" href="">Anti Lock Braking System(ABS)</a></div>
+    <div class="col-md-3 bg-secondary mx-1"><a class="text-light text-decoration-none"  href="">Driver Airbag</a></div>
+    <div class="col-md-3 mx-2 border border-black"><a class="text-secondary text-decoration-none"  href="">Passenger Airbag</a></div>
+    <div class="col-md-2 mx-2 border border-black"><a class="text-secondary text-decoration-none"  href="">Safety Airbag</a></div>
+   </div>
+<!-- safety -->
+<!-- comfort -->
+  <div class="col-md-12 mt-2 ">
+        <h4>Comfort</h4>
+    </div>
+   <div class="row ">
+    <div class="col-md-3 bg-secondary mx-1 "><a class="text-light text-decoration-none" href="">Air Conditioner (Front) </a></div>
+    <div class="col-md-3 border border-black mx-1"><a class="text-secondary text-decoration-none"  href="">Air Conditioner (Rear)</a></div>
+    <div class="col-md-3 mx-2 border border-black"><a class="text-secondary text-decoration-none"  href="">AM/FM Radio</a></div>
+    <div class="col-md-2 mx-2 border border-black"><a class="text-secondary text-decoration-none"  href="">AM/FM Stereo</a></div>
+    
+   </div>
+   <div class="row ">
+     <div class="col-md-3 border border-black  mx-1 mt-3 "><a class="text-secondary text-decoration-none" href="">CD Player </a></div>
+    <div class="col-md-3 border border-black  mx-1 mt-3 "><a class="text-secondary text-decoration-none"  href="">CD Changer</a></div>
+    <div class="col-md-3 mx-2 border border-black mt-3 "><a class="text-secondary text-decoration-none"  href="">Cruise Speed Control</a></div>
+    <div class="col-md-2 mx-2 border border-black mt-3 "><a class="text-secondary text-decoration-none"  href="">Digital Speedmeter</a></div>
+   </div>
+   <div class="row ">
+     <div class="col-md-3 border border-black mx-1 mt-3 "><a class="text-secondary text-decoration-none" href="">DVD Player </a></div>
+    <div class="col-md-3  border border-black mx-1 mt-3 "><a class="text-secondary text-decoration-none"  href="">Hard Disk Drive</a></div>
+    <div class="col-md-3 mx-2 border border-black mt-3 bg-secondary "><a class="text-light text-decoration-none "  href="">Navigation System(GPS)</a></div>
+    <div class="col-md-2 mx-2 border border-black mt-3 bg-secondary  "><a class="text-light  text-decoration-none"  href="">Power Steering</a></div>
+   </div>
+    <div class="row ">
+     <div class="col-md-3 border border-black mx-1 mt-3 "><a class="text-secondary text-decoration-none" href="">Premium  Audio System</a></div>
+    <div class="col-md-3 bg-secondary mx-1 mt-3 "><a class="text-light text-decoration-none"  href="">Remote Keyless System</a></div>
+    <div class="col-md-3 mx-2 border border-black mt-3 "><a class="text-secondary text-decoration-none"  href="">Tilt Steering Wheel</a></div>
+   
+   </div>
+<!-- comfort -->
+<!-- Interior -->
+  <div class="col-md-12">
+        <h4>Interior</h4>
+    </div>
+   <div class="row ">
+    <div class="col-md-3 border border-black mx-1 "><a class="text-secondary text-decoration-none" href="">Leather Seats</a></div>
+    <div class="col-md-3 border border-black mx-1"><a class="text-secondary text-decoration-none"  href="">Power Door Locks</a></div>
+    <div class="col-md-3 mx-2 border border-black"><a class="text-secondary text-decoration-none"  href="">Power Mirrors</a></div>
+    <div class="col-md-2 mx-2 border border-black"><a class="text-secondary text-decoration-none"  href="">Power Seats</a></div>
+   </div>
+   <div class="row ">
+    <div class="col-md-3 bg-secondary mx-1 mt-3 "><a class="text-light text-decoration-none" href="">Power Windows</a></div>
+    <div class="col-md-3 border border-black  mx-1 mt-3 "><a class="text-secondary text-decoration-none"  href="">Rear window Defroster</a></div>
+    <div class="col-md-3 mx-2 border border-black mt-3 "><a class="text-secondary text-decoration-none"  href="">Rear Window Wiper</a></div>
+    <div class="col-md-2 mx-2 border border-black mt-3 "><a class="text-secondary text-decoration-none"  href="">Third Row Seats</a></div>
+   </div>
+   <div class="row ">
+    <div class="col-md-3 border border-black mx-1 p-2 mt-3  "><a class="text-secondary text-decoration-none" href="">Tinted Glass </a></div>
+    
+  
+   </div>
+<!-- Interior -->
+
+<!-- Exterior -->
+  <div class="col-md-12 ">
+        <h4>Exterior</h4>
+    </div>
+   
+   <div class="row ">
+    <div class="col-md-3 border border-black mx-1 p-2  "><a class="text-secondary text-decoration-none" href="">Alloy Wheels </a></div>
+    <div class="col-md-3 border border-black mx-1 p-2  "><a class="text-secondary text-decoration-none" href="">Power SLiding Door </a></div>
+    <div class="col-md-3 border border-black mx-1 p-2  "><a class="text-secondary text-decoration-none" href="">Sunroof </a></div>
+    
+  
+   </div>
+<!-- Exterior -->
+ 
+<!-- Exterior -->
+  <div class="col-md-12 ">
+        <h4>Exterior</h4>
+    </div>
+   
+   <div class="row ">
+    <div class="col-md-3 border border-black mx-1 p-2  "><a class="text-secondary text-decoration-none" href="">Customized Wheels</a></div>
+    <div class="col-md-2 border border-black mx-1 p-2  "><a class="text-secondary text-decoration-none" href="">Fully Loaded</a></div>
+    <div class="col-md-3 border border-black mx-1 p-2  "><a class="text-secondary text-decoration-none" href="">Maintainance History Avaiable </a></div>
+    <div class="col-md-3 border border-black mx-1 p-2  "><a class="text-secondary text-decoration-none" href="">Brand New Tires </a></div>
+    
+  
+   </div>
+    <div class="row ">
+    <div class="col-md-3 bg-secondary mx-1 p-2 mt-3  "><a class="text-light text-decoration-none" href="">No Accident History</a></div>
+    <div class="col-md-3 border border-black mx-1 p-2  mt-3 "><a class="text-secondary text-decoration-none" href="">Non Smoking Previous Owner</a></div>
+    <div class="col-md-3 border border-black mx-1 p-2  mt-3 "><a class="text-secondary text-decoration-none" href="">One Owner History </a></div>
+    <div class="col-md-2 border border-black mx-1 p-2   mt-3"><a class="text-secondary text-decoration-none" href="">Performance Rated Tower</a></div>
+    
+  
+   </div>
+   <div class="row ">
+    <div class="col-md-3 border border-black mx-1 p-2 mt-3  "><a class="text-secondary text-decoration-none" href="">Re Painted Body</a></div>
+    <div class="col-md-3 border border-black mx-1 p-2  mt-3 "><a class="text-secondary text-decoration-none" href="">Turbo Engine</a></div>
+    <div class="col-md-3 border border-black mx-1 p-2  mt-3 "><a class="text-secondary text-decoration-none" href="">Upgarded Audio System </a></div>
+ 
+    
+  
+   </div>
+<!-- Exterior -->
+</div>
+
+
+    </div>
+  </div>
+ </div>
+
+
+
+  <!-- ======== How To Buy ======-->
+
+    <div class="howtobuy bg-black mt-5">
+     
+             
+<div class="d-flex align-items-center justify-content-between ">
+    <div class="d-flex align-items-center py-3 ">
+     <hr  class="m-0  border-3 border-light" style="width:70px; " />
+    <h2 class="mb-0 text-light ms-3">Recommended Items</h2>
+  </div>
+  <button class="btn btn-outline-primary bg-primary text-light px-4 mx-3">View All</button>
+</div>
+
+        <div class="container-fluid carsection">
+          
+          <div class="row d-flex  justify-content-between text-light">
+              <div class="car-container">
+    <div class="car-card">
+      <img src="./imgs/1747297515626.jpg" alt="Mazda Verisa">
+      <h5>2010 MAZDA VERISA</h5>
+      <span>2010/05</span>
+      <span>FOB. US$1,054</span>
+    </div>
+
+    <div class="car-card">
+      <img src="./imgs/1747297393558.jpg" alt="Toyota Vitz">
+      <h5>2006 TOYOTA VITZ</h5>
+      <span>2006/08</span>
+      <span>FOB. US$1,326</span>
+    </div>
+
+    <div class="car-card">
+      <img src="./imgs/1747297574047.jpg" alt="Mazda CX-5">
+      <h5>2012 MAZDA CX-5</h5>
+      <span>2012/05</span>
+      <span>FOB. US$3,060</span>
+    </div>
+
+    <div class="car-card">
+      <img src="./imgs/1747182859475.jpg" alt="Toyota Vanguard">
+      <h5>2009 NISSAN DUALIS</h5>
+      <span>2009/11</span>
+      <span>FOB. US$1,836</span>
+    </div>
+
+    <div class="car-card">
+      <img src="./imgs/1745909704652.jpg" alt="Nissan Dualis">
+      <h5>2006 TOYOTA WISH</h5>
+      <span>2006/07</span>
+      <span>FOB. US$1,870</span>
+    </div>
+  </div>
+            </div>
+          
+          
+        </div>
+         
+      
+     
+</div>
+    <!-- ======== How To Buy ======-->
+
+    
+<hr width="100%" class="my-5" />
+
+     <!-- ======== Footer ======-->
+
+    <div class="container-fluid mt-4 ">
+        <div class="row text-dark text-center text-md-start footer m-auto">
+          <div class="col-md-4">
+
+            <a class="navbar-brand " href="#"
+            ><img src="imgs/logo.png" width="250px" alt=""
+          /></a>
+
+            <ul class="list-unstyled mt-5">
+              <p>5-2 Nishihaiagari, Kamigaoka-cho, Toyota City, Aichi Prefecture, 473-0931, Japan</p>
+              <p>Tel +81-565-85-0602
+                </p>
+                <p>Fax +81-565-85-0606</p>
+              <button class="btn btn-primary w-75 my-3
+              ">Contact Us</button>
+             
+            <hr width="75%" class="my-1" />
+            Terms of Use
+            <hr width="75%" class="my-1" />
+            Privacy Policy
+            <hr width="75%" class="my-1" />
+            Cookie Policy
+            </ul>
+          </div>
+          <div class="col-md-2">
+            <h6 ><b>Contents</b></h6>
+            <hr width="100%"/>
+            <ul class="list-unstyled ">
+              <p></p>
+<p>How to Buy</p>
+<p>About Us</p>
+<p>Local Introduction</p>
+<p>Contact Us</p>
+            
+            </ul>
+          </div>
+          <div class="col-md-1">
+            <h6><b>Makers</b></h6>
+              <hr width="250%"/>
+            <ul class="list-unstyled">
+             <p>Couper</p>
+             <p>Convertiable</p>
+             <p>Sedan</p>
+             <p>Wagon</p>
+             <p>Convertiable</p>
+             <p>Sedan</p>
+             <p>Wagon</p>
+            </ul>
+          </div>
+          <div class="col-md-1 mt-5">
+            
+           
+            <ul class="list-unstyled">
+             <p>MAZDA</p>
+             <p>BMW</p>
+             <p>LAND ROVER</p>
+             <p>ISUZU</p>
+             <p>JEEP</p>
+             
+            </ul>
+          </div>
+          <div class="col-md-2">
+            <h6><b>
+              Body Types
+            </b></h6>
+              <hr width="110%"/>
+            <ul class="list-unstyled fs-6">
+             <p>Couper
+              </p>
+              <p>Convertiable</p>
+              <p>
+                Sedan</p>
+                <p>Wagon</p>
+                <p>Van</p>
+                <p>Truck</p>
+                <p>SUV</p>
+            </ul>
+          </div>
+          <div class="col-md-2 py-0">
+            <h6><b>Find Car</b></h6>
+              <hr width="100%"/>
+            <ul class="list-unstyled">
+              <p>Browse All Stock </p>
+              <p> Sale Cars</p>
+              <p> Recommended Cars</p>
+                <p>Luxury Cars</p>
+            </ul>
+          </div>
+         
+        </div>
+      <div class="row">
+          <div class="col-12 d-flex justify-content-end ">
+            <i class="fab fa-facebook-square px-2 fs-2 text-primary "></i>
+            <i class="fab fa-instagram px-2 fs-2 text-primary "></i>
+
+          </div>
+          <div class="col-12 d-flex justify-content-end mt-2">
+            
+            <p>Copyright © Real Motor Japan All Rights Reserved.</p>
+          </div>
+        </div>
+     
+      </div>
+
+      
+        
+    
+    <!-- ======== Footer ======-->
+     <script>
+  const images = [
+    "./imgs/1.jpg",
+    "./imgs/2.jpg",
+    "./imgs/3.jpg",
+    "./imgs/4.jpg"
+  ];
+  let currentIndex = 0;
+
+  function updateSlider() {
+    document.getElementById("mainSlide").src = images[currentIndex];
+    const thumbnails = document.querySelectorAll(".thumbnails img");
+    thumbnails.forEach((img, index) => {
+      img.classList.toggle("active", index === currentIndex);
+    });
+  }
+
+  function prevImage() {
+    currentIndex = (currentIndex - 1 + images.length) % images.length;
+    updateSlider();
+  }
+
+  function nextImage() {
+    currentIndex = (currentIndex + 1) % images.length;
+    updateSlider();
+  }
+
+  function changeImage(index) {
+    currentIndex = index;
+    updateSlider();
+  }
+
+  // Initialize
+  updateSlider();
+</script>
+
+</body>
+</html>
