@@ -1,0 +1,65 @@
+[
+  {
+    "id": 2,
+    "name": "2010 MAZDA VERISA",
+    "imageurl": "https://cache1.pakwheels.com/system/car_generation_pictures/6294/original/Mazda_Verisa_Front_Right_Angled.jpg?1647435424",
+    "date": "2024-01-22",
+    "price": 32950.00
+  },
+  {
+    "id": 3,
+    "name": "Aurion GT",
+    "imageurl": "https://firebasestorage.googleapis.com/v0/b/real-motor-japan.firebasestorage.app/o/vehicle%2F2025010097%2F0.jpg?alt=media&token=7c3b20db-04c8-41d8-bdb0-36b20a1d07ad",
+    "date": "2022-11-10",
+    "price": 18900.00
+  },
+  {
+    "id": 4,
+    "name": "Nexara Coupe",
+    "imageurl": "https://firebasestorage.googleapis.com/v0/b/real-motor-japan.firebasestorage.app/o/vehicle%2F5025050007%2F1747445567605?alt=media&token=2d3ed1bf-b191-4f6d-9449-12511b659a14",
+    "date": "2023-03-05",
+    "price": 45999.99
+  },
+  {
+    "id": 5,
+    "name": "Strato SUV",
+    "imageurl": "https://example.com/images/strato_suv.jpg",
+    "date": "2024-07-18",
+    "price": 52000.00
+  },
+  {
+    "id": 6,
+    "name": "Elara Hatch",
+    "imageurl": "https://example.com/images/elara_hatch.jpg",
+    "date": "2023-09-30",
+    "price": 17500.50
+  },
+  {
+    "id": 7,
+    "name": "Pulsar Z",
+    "imageurl": "https://example.com/images/pulsar_z.jpg",
+    "date": "2022-12-25",
+    "price": 29995.00
+  },
+  {
+    "id": 8,
+    "name": "Graviton Truck",
+    "imageurl": "https://example.com/images/graviton_truck.jpg",
+    "date": "2024-04-12",
+    "price": 64999.99
+  },
+  {
+    "id": 9,
+    "name": "Spectra EV",
+    "imageurl": "https://example.com/images/spectra_ev.jpg",
+    "date": "2023-08-08",
+    "price": 39999.00
+  },
+  {
+    "id": 10,
+    "name": "Lumina Sedan",
+    "imageurl": "https://example.com/images/lumina_sedan.jpg",
+    "date": "2024-02-14",
+    "price": 27950.75
+  }
+]
